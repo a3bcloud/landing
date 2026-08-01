@@ -1,8 +1,8 @@
 {
-  "comprobado": "1970-01-01T00:00:00Z",
-  "correcto": false,
-  "codigo": null,
-  "respuesta_ms": null,
-  "certificado_dias": null,
-  "problemas": ["sin comprobar todavia"]
+  "comprobado": "2026-08-01T15:51:28Z",
+  "correcto": true,
+  "codigo": "200",
+  "respuesta_ms": 499,
+  "certificado_dias": 89,
+  "problemas": []
 }
