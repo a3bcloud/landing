@@ -1,0 +1,84 @@
+name: Estado en vivo
+
+# Comprueba este mismo sitio cada hora y escribe el resultado en estado.json, que la portada
+# lee y muestra.
+#
+# Por que existe. Las paginas de la competencia convencen con prueba social -estrellas de
+# GitHub, numero de clientes, valoraciones-. Aqui no hay nada de eso todavia, y una seccion de
+# testimonios vacia hace mas dano que no tenerla. Lo que si se puede ensenar es el servicio
+# funcionando: la ultima comprobacion, con su hora, actualizada sola.
+#
+# Vive en ESTE repositorio y no en el del panel a proposito: asi su propio GITHUB_TOKEN puede
+# escribir el resultado, y no hay que guardar ningun secreto en ninguna parte.
+#
+# Si el sitio se cae, este flujo falla y ademas deja de actualizar estado.json. La portada
+# detecta que el dato esta rancio y lo dice en vez de mentir.
+
+on:
+  schedule:
+    - cron: '40 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  comprobar:
+    name: Comprobar y publicar el estado
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Comprobar el sitio y escribir estado.json
+        run: |
+          python3 - <<'PY'
+          import json, socket, ssl, subprocess
+          from datetime import datetime, timezone
+
+          URL, HOST = 'https://gestion.a3bhub.cloud/', 'gestion.a3bhub.cloud'
+          problemas = []
+
+          r = subprocess.run(['curl', '-sS', '-L', '-m', '25', '-o', '/dev/null',
+                              '-w', '%{http_code} %{time_total}', URL],
+                             capture_output=True, text=True)
+          try:
+              codigo, tiempo = r.stdout.split()
+              tiempo = round(float(tiempo) * 1000)
+          except ValueError:
+              codigo, tiempo = '000', None
+          if codigo != '200':
+              problemas.append(f'HTTP {codigo}')
+
+          dias = None
+          try:
+              ctx = ssl.create_default_context()
+              with socket.create_connection((HOST, 443), timeout=15) as s:
+                  with ctx.wrap_socket(s, server_hostname=HOST) as ts:
+                      fin = datetime.strptime(ts.getpeercert()['notAfter'],
+                                              '%b %d %H:%M:%S %Y %Z').replace(tzinfo=timezone.utc)
+              dias = (fin - datetime.now(timezone.utc)).days
+          except Exception as e:
+              problemas.append(f'certificado ilegible ({e.__class__.__name__})')
+
+          estado = {
+              'comprobado': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+              'correcto': not problemas,
+              'codigo': codigo,
+              'respuesta_ms': tiempo,
+              'certificado_dias': dias,
+              'problemas': problemas,
+          }
+          json.dump(estado, open('estado.json', 'w'), ensure_ascii=False, indent=2)
+          print(json.dumps(estado, ensure_ascii=False))
+          PY
+
+      - name: Publicar si ha cambiado
+        run: |
+          git config user.name 'Vigilante A3B'
+          git config user.email 'noreply@a3bcloud.com'
+          git add estado.json
+          # --quiet no basta: si el minuto no cambia, no hay diferencia y commit fallaria.
+          git diff --staged --quiet || git commit -m "estado: comprobacion automatica"
+          git push

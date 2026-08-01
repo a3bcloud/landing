@@ -293,3 +293,77 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 
 /* La envoltura de la portada ya no lleva su propia cabecera arriba. */
 .envoltura.portada-abajo { padding-top: 4rem; gap: 4.5rem; }
+
+/* ============================================================
+   Secciones de marketing de la portada
+   ============================================================ */
+
+/* --- Estado en vivo: prueba real en lugar de prueba social --- */
+
+.vivo {
+  border: 1px solid var(--linea); border-radius: 3px; background: var(--papel-alto);
+  padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 1rem;
+}
+.vivo-cabeza { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.vivo-cabeza .pulso { flex: 0 0 auto; }
+.vivo-cabeza strong { font-size: 0.95rem; }
+.vivo-cabeza .sello {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--apagado);
+  margin-left: auto; font-variant-numeric: tabular-nums;
+}
+.vivo-datos {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1rem;
+}
+.dato { display: flex; flex-direction: column; gap: 0.15rem; }
+.dato b {
+  font-family: var(--mono); font-size: 1.35rem; font-weight: 500;
+  font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+}
+.dato span { font-size: 0.78rem; color: var(--apagado); }
+.dato.bien b { color: var(--senal); }
+
+/* --- Comparativa honesta --- */
+
+.compara { overflow-x: auto; }
+.compara table { border-collapse: collapse; width: 100%; font-size: 0.93rem; min-width: 32rem; }
+.compara th, .compara td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--linea); text-align: left; vertical-align: top; }
+.compara thead th {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--apagado); font-weight: 500;
+}
+.compara thead th:last-child { color: var(--acento); }
+.compara tbody th { font-weight: 400; }
+.compara td:last-child { background: var(--acento-suave); }
+.compara .marca-si { color: var(--acento); font-family: var(--mono); }
+.compara .marca-no { color: var(--apagado); font-family: var(--mono); }
+
+/* --- Preguntas --- */
+
+.preguntas { display: flex; flex-direction: column; gap: 0.6rem; }
+.preguntas details {
+  border-bottom: 1px solid var(--linea); padding: 0.9rem 0;
+}
+.preguntas summary {
+  cursor: pointer; font-family: var(--serif); font-size: 1.05rem; font-weight: 600;
+  list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
+}
+.preguntas summary::-webkit-details-marker { display: none; }
+.preguntas summary::after { content: "+"; color: var(--acento); font-family: var(--mono); font-weight: 400; }
+.preguntas details[open] summary::after { content: "−"; }
+.preguntas details > p { margin-top: 0.7rem; color: var(--apagado); font-size: 0.97rem; }
+.preguntas details > p + p { margin-top: 0.6rem; }
+
+/* --- Cierre oscuro --- */
+
+.cierre {
+  background: #0a2118; color: #eef4f0; padding: 4rem 1.5rem;
+  border-top: 1px solid #123024;
+}
+.cierre-centro {
+  max-width: 46rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.3rem;
+  align-items: flex-start;
+}
+.cierre h2 { color: #f4f9f6; }
+.cierre p { color: #a9c4b7; max-width: 34rem; }
+.cierre .boton { background: #2ce58c; color: #06170f; }
+.cierre .rotulo { color: #7f9b8d; }

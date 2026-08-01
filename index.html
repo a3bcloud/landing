@@ -70,7 +70,24 @@
 
 <div class="envoltura portada-abajo">
 
-  <section>
+    <section>
+    <p class="rotulo">Lo primero, para no perderte el tiempo</p>
+    <h2>Lo que compras no es un panel</h2>
+    <p>
+      Un panel de despliegue lo tienes gratis. Coolify se instala con un comando y
+      <a href="https://coolify.io/pricing">alojado cuesta 5&nbsp;$</a>. Si sabes administrar un
+      servidor y te gusta hacerlo, esa es tu opción y te la recomiendo sin rodeos.
+    </p>
+    <p>
+      Lo que aquí se paga es lo que pasa <strong>después</strong> de instalarlo: que alguien
+      compruebe cada mes que tus copias se pueden restaurar de verdad, que se entere a las tres de
+      la mañana de que tu web no responde, y que aplique el parche del fallo de seguridad que
+      salió el martes.
+    </p>
+    <p class="frase">Nadie deja su negocio parado por no tener un panel. Lo deja parado por no tener a nadie mirando.</p>
+  </section>
+
+<section>
     <p class="rotulo">El problema</p>
     <h2>Casi nadie tiene copias de seguridad. Tiene la costumbre de hacerlas.</h2>
     <p>
@@ -128,12 +145,23 @@
       </div>
     </div>
 
-    <div class="prueba">
-      último informe · servidor de referencia<br>
-      copia 03:15 &rarr; local + externa · <b>restauración verificada</b><br>
-      certificado &rarr; válido 89 días · renovación automática<br>
-      avisos de seguridad &rarr; 0 pendientes<br>
-      puertos abiertos a Internet &rarr; 22, 80, 443
+    <div class="vivo" id="vivo">
+      <div class="vivo-cabeza">
+        <span class="pulso"></span>
+        <strong id="vivo-titulo">Comprobando…</strong>
+        <span class="sello" id="vivo-sello"></span>
+      </div>
+      <div class="vivo-datos">
+        <div class="dato bien"><b id="vivo-codigo">—</b><span>respuesta HTTP</span></div>
+        <div class="dato"><b id="vivo-ms">—</b><span>tiempo de carga</span></div>
+        <div class="dato"><b id="vivo-cert">—</b><span>certificado</span></div>
+        <div class="dato"><b>3</b><span>vigilantes independientes</span></div>
+      </div>
+      <p style="font-size:.9rem;color:var(--apagado)">
+        Esto no es una captura: es el resultado real de la última comprobación de
+        <strong>esta misma página</strong>, hecha desde fuera del servidor por el mismo sistema que
+        vigilaría el tuyo.
+      </p>
     </div>
   </section>
 
@@ -239,6 +267,85 @@
     </div>
   </section>
 
+
+  <section>
+    <p class="rotulo">Comparativa</p>
+    <h2>Dónde gana cada uno</h2>
+    <p>
+      Incluida la parte que no me conviene. Si te vendo lo que no soy, lo descubres al mes y te
+      vas — y con veinte clientes eso me sale más caro que perder una venta hoy.
+    </p>
+    <div class="compara">
+      <table>
+        <thead>
+          <tr><th></th><th>Panel gratis</th><th>Alojamiento gestionado</th><th>A3B Cloud</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Precio de partida</th><td>0&nbsp;$</td><td>desde 5&nbsp;$</td><td>15&nbsp;$</td></tr>
+          <tr><th>El servidor es tuyo</th><td class="marca-si">sí</td><td class="marca-no">no</td><td class="marca-si">sí</td></tr>
+          <tr><th>Quién vigila que tu web responde</th><td>tú</td><td>ellos, la infraestructura</td><td>yo, tu web</td></tr>
+          <tr><th>Quién comprueba que la copia se restaura</th><td>tú</td><td class="marca-no">nadie</td><td>yo, cada mes, con certificado</td></tr>
+          <tr><th>Quién aplica los parches</th><td>tú</td><td>ellos</td><td>yo</td></tr>
+          <tr><th>Con quién hablas cuando falla</th><td class="marca-no">con nadie</td><td>con un ticket</td><td>conmigo</td></tr>
+          <tr><th>Si te vas, ¿qué pasa?</th><td>nada, es tuyo</td><td>hay que migrar</td><td>nada, es tuyo</td></tr>
+          <tr><th>Cobertura 24/7</th><td class="marca-no">—</td><td class="marca-si">sí</td><td class="marca-no">no</td></tr>
+          <tr><th>Especializado en WordPress</th><td class="marca-no">no</td><td class="marca-si">a menudo sí</td><td class="marca-no">no</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.95rem;color:var(--apagado)">
+      Las dos últimas filas son suyas, no mías. Si necesitas cobertura de madrugada garantizada por
+      contrato, o llevas WordPress y quieres algo hecho a su medida, hay opciones mejores que yo y
+      te las diré por su nombre.
+    </p>
+  </section>
+
+  <section>
+    <p class="rotulo">Preguntas incómodas</p>
+    <h2>Lo que preguntarías si estuviéramos hablando</h2>
+    <div class="preguntas">
+      <details>
+        <summary>¿Por qué no uso Coolify Cloud por 5&nbsp;$ y me ahorro esto?</summary>
+        <p>Deberías, si te apañas solo. Esos 5&nbsp;$ te quitan de encima alojar el panel — pero el
+          servidor lo sigues administrando tú: los parches, las copias, comprobar que se restauran, y
+          enterarte cuando algo cae. Aquí pagas justo eso.</p>
+      </details>
+      <details>
+        <summary>¿Y si desapareces?</summary>
+        <p>Tu servidor sigue siendo tuyo, con tu cuenta en tu proveedor y tu acceso de
+          administrador. Nunca seré el único administrador de tu máquina. Si mañana dejo esto, tus
+          aplicaciones siguen corriendo exactamente igual: no hay nada que rescatar ni migrar.</p>
+        <p>Es lo contrario de lo que te ofrece un alojamiento gestionado, y es deliberado.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si un mes no pago?</summary>
+        <p>Dejo de vigilar y te lo digo. Nada se apaga, nada se borra, nada se secuestra: la máquina
+          es tuya. Tus copias en mi almacenamiento se guardan 30 días más por si quieres recuperarlas.</p>
+      </details>
+      <details>
+        <summary>¿De verdad restauras las copias cada mes?</summary>
+        <p>Sí, y recibes el resultado por escrito: qué copia, cuánto tardó, y si los datos cifrados
+          se descifraron correctamente. Esa última comprobación es la que casi nadie hace y la única
+          que demuestra algo — un volcado que se restaura pero queda ilegible no sirve de nada.</p>
+        <p>Si el ensayo sale mal, también te lo mando. Un informe que siempre sale perfecto deja de
+          creerse al tercer mes.</p>
+      </details>
+      <details>
+        <summary>¿Tienes acceso a mis datos?</summary>
+        <p>Tengo acceso administrativo al servidor, que hace falta para gestionarlo. No entro en el
+          contenido de tus aplicaciones salvo que me pidas ayuda con una incidencia concreta o haya
+          que restaurar una copia. Puedes revocarme el acceso cuando quieras.</p>
+      </details>
+      <details>
+        <summary>Estás empezando. ¿Por qué debería fiarme?</summary>
+        <p>Por eso las primeras plazas tienen precio de por vida: es lo que se paga por entrar
+          cuando todavía no hay una lista de clientes que respondan por mí.</p>
+        <p>Y por eso está publicado arriba el estado real de esta misma página, en vez de un número
+          de estrellas o un logotipo de cliente que no tengo.</p>
+      </details>
+    </div>
+  </section>
+
   <div class="limites">
     <h2>Lo que no incluye</h2>
     <p style="font-size: 0.95rem;">
@@ -256,15 +363,7 @@
     </ul>
   </div>
 
-  <section class="llamada">
-    <p class="rotulo">Plazas limitadas</p>
-    <h2>Estoy abriendo las primeras plazas</h2>
-    <p>
-      Atiendo a poca gente a propósito: la vigilancia solo vale algo si de verdad hay alguien
-      detrás. Si te interesa, escríbeme y hablamos de tu caso antes de que pagues nada.
-    </p>
-    <a class="boton" href="mailto:CORREO@a3bcloud.com?subject=Gesti%C3%B3n%20de%20servidor%20%E2%80%94%20A3B%20Cloud">Escríbeme</a>
-  </section>
+
 
   <footer>
     <div>A3B Cloud LLC · Gestión de servidores</div>
@@ -278,5 +377,47 @@
       software libre bajo licencia Apache&nbsp;2.0.</div>
   </footer>
 </div>
+
+<section class="cierre">
+  <div class="cierre-centro">
+    <p class="rotulo">Diez plazas de fundador</p>
+    <h2>Hablemos antes de que pagues</h2>
+    <p>
+      Cuéntame qué tienes montado y te digo con franqueza si esto te sirve. Si tu caso encaja mejor
+      con otra cosa, te lo diré: prefiero no cobrarte a tenerte descontento tres meses.
+    </p>
+    <a class="boton" href="mailto:CORREO@a3bcloud.com?subject=Gesti%C3%B3n%20de%20servidor%20-%20A3B%20Cloud">Escríbeme</a>
+  </div>
+</section>
+
+<script>
+// Lee el resultado de la ultima comprobacion horaria. Si el dato esta rancio o no se puede
+// leer, se dice: una pagina que presume de vigilancia no puede mentir sobre su propio estado.
+(function () {
+  var titulo = document.getElementById('vivo-titulo');
+  var sello  = document.getElementById('vivo-sello');
+  function cae(motivo) { titulo.textContent = motivo; sello.textContent = ''; }
+
+  fetch('/estado.json?' + Date.now()).then(function (r) {
+    if (!r.ok) throw 0;
+    return r.json();
+  }).then(function (e) {
+    var cuando = new Date(e.comprobado);
+    var horas  = (Date.now() - cuando) / 3600000;
+
+    document.getElementById('vivo-codigo').textContent = e.codigo || '—';
+    document.getElementById('vivo-ms').textContent     = e.respuesta_ms ? e.respuesta_ms + ' ms' : '—';
+    document.getElementById('vivo-cert').textContent   = e.certificado_dias != null ? e.certificado_dias + ' d' : '—';
+
+    if (horas > 3) {
+      cae('Sin comprobar desde hace ' + Math.round(horas) + ' horas');
+      return;
+    }
+    titulo.textContent = e.correcto ? 'Todo correcto' : 'Con incidencias: ' + (e.problemas || []).join('; ');
+    var mins = Math.round(horas * 60);
+    sello.textContent = 'comprobado hace ' + (mins < 1 ? 'menos de un minuto' : mins + ' min');
+  }).catch(function () { cae('No se pudo leer el estado'); });
+})();
+</script>
 </body>
 </html>
