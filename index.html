@@ -3,197 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A3B Cloud - Gestion de servidores</title>
-<meta name="description" content="Tu servidor sigue siendo tuyo. Yo me encargo de que las copias esten probadas y de enterarme antes que tu cuando algo se rompe.">
+<title>A3B Cloud - Gestión de servidores</title>
+<meta name="description" content="Tu servidor sigue siendo tuyo. Yo me encargo de que las copias estén probadas y de enterarme antes que tú cuando algo se rompe.">
 <meta name="theme-color" content="#17784b">
-<meta property="og:title" content="A3B Cloud - Gestion de servidores">
-<meta property="og:description" content="Tu servidor, vigilado. Y con pruebas.">
+<meta property="og:title" content="A3B Cloud - Gestión de servidores">
+<meta property="og:description" content="Tu servidor sigue siendo tuyo. Yo me encargo de que las copias estén probadas y de enterarme antes que tú cuando algo se rompe.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://gestion.a3bhub.cloud">
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+<link rel="stylesheet" href="/estilo.css">
 </head>
 <body>
-<style>
-  :root {
-    --tinta:        #0b1f17;
-    --papel:        #f5f7f4;
-    --papel-alto:   #ffffff;
-    --acento:       #17784b;
-    --acento-suave: #e3efe8;
-    --senal:        #12a35f;
-    --ambar:        #8a5a06;
-    --ambar-suave:  #f7f0e0;
-    --apagado:      #5d6b62;
-    --linea:        #dbe3dd;
-
-    --serif: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", serif;
-    --sans:  system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --tinta: #e6efe9; --papel: #0c1310; --papel-alto: #121a16;
-      --acento: #4fd399; --acento-suave: #16281f; --senal: #2ce58c;
-      --ambar: #d9a441; --ambar-suave: #241d0e; --apagado: #90a096; --linea: #1e2b24;
-    }
-  }
-  :root[data-theme="dark"] {
-    --tinta: #e6efe9; --papel: #0c1310; --papel-alto: #121a16;
-    --acento: #4fd399; --acento-suave: #16281f; --senal: #2ce58c;
-    --ambar: #d9a441; --ambar-suave: #241d0e; --apagado: #90a096; --linea: #1e2b24;
-  }
-  :root[data-theme="light"] {
-    --tinta: #0b1f17; --papel: #f5f7f4; --papel-alto: #ffffff;
-    --acento: #17784b; --acento-suave: #e3efe8; --senal: #12a35f;
-    --ambar: #8a5a06; --ambar-suave: #f7f0e0; --apagado: #5d6b62; --linea: #dbe3dd;
-  }
-
-  body {
-    background: var(--papel); color: var(--tinta);
-    font-family: var(--sans); font-size: 17px; line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .envoltura {
-    max-width: 46rem; margin: 0 auto; padding: 4rem 1.5rem 6rem;
-    display: flex; flex-direction: column; gap: 5rem;
-  }
-
-  h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; margin: 0; }
-  h1 { font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1.12; letter-spacing: -0.015em; }
-  h2 { font-size: clamp(1.4rem, 3.6vw, 1.8rem); line-height: 1.25; }
-  h3 { font-size: 1.1rem; }
-  p  { margin: 0; }
-
-  .marca {
-    font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--acento);
-    display: flex; align-items: center; gap: 0.55rem;
-  }
-  .pulso {
-    width: 7px; height: 7px; border-radius: 50%; background: var(--senal);
-    animation: latir 2.4s ease-out infinite;
-  }
-  @keyframes latir {
-    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--senal) 55%, transparent); }
-    70%  { box-shadow: 0 0 0 7px color-mix(in srgb, var(--senal) 0%, transparent); }
-    100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--senal) 0%, transparent); }
-  }
-  @media (prefers-reduced-motion: reduce) { .pulso { animation: none; } }
-
-  .portada { display: flex; flex-direction: column; gap: 1.5rem; }
-  .entradilla { font-size: 1.18rem; color: var(--apagado); max-width: 34rem; }
-  .entradilla strong { color: var(--tinta); font-weight: 600; }
-
-  section { display: flex; flex-direction: column; gap: 1.4rem; }
-  .rotulo {
-    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--apagado);
-  }
-
-  /* La guardia: el eje es CUANDO ocurre cada cosa */
-  .guardia { display: flex; flex-direction: column; border-top: 1px solid var(--linea); }
-  .turno {
-    display: grid; grid-template-columns: 8.5rem 1fr; gap: 0 1.5rem;
-    padding: 1.15rem 0; border-bottom: 1px solid var(--linea); align-items: baseline;
-  }
-  .cuando {
-    font-family: var(--mono); font-size: 0.82rem; color: var(--acento);
-    font-variant-numeric: tabular-nums;
-  }
-  .que { display: flex; flex-direction: column; gap: 0.3rem; }
-  .que small { color: var(--apagado); font-size: 0.9rem; line-height: 1.5; }
-  @media (max-width: 34rem) { .turno { grid-template-columns: 1fr; gap: 0.35rem; } }
-
-  /* Planes */
-  .planes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  @media (max-width: 38rem) { .planes { grid-template-columns: 1fr; } }
-
-  .plan {
-    background: var(--papel-alto); border: 1px solid var(--linea); border-radius: 3px;
-    padding: 1.8rem; display: flex; flex-direction: column; gap: 1.2rem;
-  }
-  .plan.destacado { border-color: var(--acento); }
-
-  .plan header { display: flex; flex-direction: column; gap: 0.5rem; }
-  .plan h3 { display: flex; align-items: center; gap: 0.6rem; }
-  .etiqueta {
-    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--acento);
-    background: var(--acento-suave); padding: 0.2rem 0.45rem; border-radius: 2px;
-  }
-  .cifra {
-    font-family: var(--mono); font-size: 2.2rem; line-height: 1;
-    letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
-  }
-  .cifra em { font-style: normal; font-size: 0.85rem; color: var(--apagado); letter-spacing: 0; }
-  .plan .resumen { font-size: 0.95rem; color: var(--apagado); }
-
-  .plan ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-  .plan li { display: grid; grid-template-columns: 1.2rem 1fr; gap: 0.6rem; font-size: 0.95rem; align-items: start; }
-  .plan li span { font-family: var(--mono); font-size: 0.9rem; line-height: 1.55; }
-  .si  { color: var(--acento); }
-  .no  { color: var(--apagado); }
-  .plan li.ausente { color: var(--apagado); }
-
-  .frase {
-    font-family: var(--serif); font-size: 1.25rem; line-height: 1.5;
-    border-left: 3px solid var(--acento); padding-left: 1.2rem; color: var(--tinta);
-  }
-
-  .fundador {
-    border: 1px solid var(--acento); border-radius: 3px; padding: 1.5rem 1.6rem;
-    display: flex; flex-direction: column; gap: 0.6rem; background: var(--acento-suave);
-  }
-  .fundador p:last-child { font-size: 0.98rem; }
-  .fundador strong { font-weight: 600; }
-
-  .extras { display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.95rem; color: var(--apagado); }
-  .extras b { color: var(--tinta); font-weight: 600; }
-
-  .incluye { display: flex; flex-direction: column; gap: 1.1rem; }
-  .punto { display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.9rem; align-items: start; }
-  .punto span:first-child { color: var(--acento); font-family: var(--mono); font-size: 0.95rem; line-height: 1.6; }
-  .punto small { display: block; color: var(--apagado); font-size: 0.92rem; margin-top: 0.15rem; }
-
-  .limites {
-    background: var(--ambar-suave); border-left: 3px solid var(--ambar);
-    padding: 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 0.85rem;
-    border-radius: 0 3px 3px 0;
-  }
-  .limites h2 { font-size: 1.15rem; }
-  .limites ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .limites li { font-size: 0.95rem; }
-
-  .prueba {
-    font-family: var(--mono); font-size: 0.82rem; background: var(--papel-alto);
-    border: 1px solid var(--linea); border-radius: 3px; padding: 1.1rem 1.3rem;
-    color: var(--apagado); overflow-x: auto; line-height: 1.75;
-  }
-  .prueba b { color: var(--senal); font-weight: 600; }
-
-  .llamada { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-start; }
-  .boton {
-    display: inline-block; background: var(--acento); color: var(--papel);
-    font-weight: 600; font-size: 1rem; padding: 0.85rem 1.6rem;
-    border-radius: 3px; text-decoration: none;
-  }
-  .boton:hover { filter: brightness(1.1); }
-  .boton:focus-visible { outline: 2px solid var(--tinta); outline-offset: 3px; }
-
-  footer {
-    border-top: 1px solid var(--linea); padding-top: 1.5rem;
-    color: var(--apagado); font-size: 0.85rem;
-    display: flex; flex-direction: column; gap: 0.5rem;
-  }
-  a { color: var(--acento); }
-</style>
-
 <div class="envoltura">
+  <div class="barra">
+    <a class="marca" href="/"><span class="pulso"></span> A3B Cloud</a>
+    <nav>
+    <a href="/" aria-current="page">Inicio</a>
+    <a href="/sobre.html">Quién está detrás</a>
+    <a href="/terminos.html">Términos</a>
+    <a href="/privacidad.html">Privacidad</a>
+    </nav>
+  </div>
 
   <header class="portada">
-    <div class="marca"><span class="pulso"></span> A3B Cloud</div>
     <h1>Tu servidor, vigilado. Y con pruebas.</h1>
     <p class="entradilla">
       Tú pones el servidor y sigues siendo su dueño. Yo me encargo de que las copias existan
@@ -396,13 +226,17 @@
     </p>
     <a class="boton" href="mailto:CORREO@a3bcloud.com?subject=Gesti%C3%B3n%20de%20servidor%20%E2%80%94%20A3B%20Cloud">Escríbeme</a>
   </section>
-
   <footer>
     <div>A3B Cloud LLC · Gestión de servidores</div>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/sobre.html">Quién está detrás</a>
+      <a href="/terminos.html">Términos</a>
+      <a href="/privacidad.html">Privacidad</a>
+    </nav>
     <div>El panel está construido sobre <a href="https://github.com/coollabsio/coolify">Coolify</a>,
       software libre bajo licencia Apache&nbsp;2.0.</div>
   </footer>
-
 </div>
 </body>
 </html>
