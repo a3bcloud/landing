@@ -1,3 +1,25 @@
+/* Tipografia propia, alojada aqui: nada de CDN, nada de fuentes del sistema.
+   Instrument Serif para los titulares -alto contraste, editorial, con caracter-,
+   Instrument Sans para el texto y JetBrains Mono para los datos, que es donde
+   una monoespaciada de verdad se nota: horas, precios, codigos de respuesta.
+   Subconjunto latino unicamente: 92 KB los tres. */
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fuentes/instrumentserif-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fuentes/instrumentsans-400.woff2") format("woff2");
+  font-weight: 400 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fuentes/jetbrainsmono-400.woff2") format("woff2");
+  font-weight: 400 700; font-style: normal; font-display: swap;
+}
+
 /* A3B Cloud — hoja de estilo del sitio.
    Un solo archivo para las cuatro paginas: si la marca cambia, cambia en un sitio. */
 
@@ -13,9 +35,9 @@
   --apagado:      #5d6b62;
   --linea:        #dbe3dd;
 
-  --serif: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", serif;
-  --sans:  system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans:  "Instrument Sans", system-ui, sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, Menlo, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,10 +72,10 @@ a:focus-visible, .boton:focus-visible { outline: 2px solid var(--tinta); outline
 }
 .envoltura.prosa { gap: 2rem; padding-top: 2rem; }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1.12; letter-spacing: -0.015em; }
-h2 { font-size: clamp(1.4rem, 3.6vw, 1.8rem); line-height: 1.25; }
-h3 { font-size: 1.1rem; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.6rem, 7.5vw, 4.4rem); line-height: 1.03; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.7rem, 4.2vw, 2.3rem); line-height: 1.15; letter-spacing: -0.01em; }
+h3 { font-size: 1.3rem; }
 p  { margin: 0; }
 
 section { display: flex; flex-direction: column; gap: 1.4rem; }
@@ -367,3 +389,60 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 .cierre p { color: #a9c4b7; max-width: 34rem; }
 .cierre .boton { background: #2ce58c; color: #06170f; }
 .cierre .rotulo { color: #7f9b8d; }
+
+/* ============================================================
+   Atmosfera y composicion
+   ============================================================ */
+
+/* Grano sobre la banda oscura. Un color plano se lee como plantilla; la textura
+   da profundidad sin anadir un solo archivo -va como SVG en la propia hoja-. */
+.banda::after {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23r)' opacity='.45'/%3E%3C/svg%3E");
+}
+
+/* Halo verde muy tenue detras del titular: da centro de gravedad a la banda. */
+.banda-centro::before {
+  content: "";
+  position: absolute; top: -6rem; left: -12rem; width: 34rem; height: 26rem;
+  background: radial-gradient(closest-side, rgba(44,229,140,.14), transparent 70%);
+  pointer-events: none;
+}
+.banda-centro { position: relative; }
+
+/* La tarjeta de estado cabalga el borde entre la banda y el cuerpo: el unico
+   elemento que rompe la retícula, y lo hace donde significa algo -la prueba
+   del servicio es justo lo que une el mundo de la maquina con el tuyo-. */
+.puente {
+  max-width: 46rem; margin: -3.25rem auto 0; padding: 0 1.5rem;
+  position: relative; z-index: 2;
+}
+.puente .vivo {
+  box-shadow: 0 18px 40px -24px rgba(6, 23, 15, .55);
+}
+
+/* --- Entrada escalonada de la portada --- */
+.banda-centro > * {
+  opacity: 0; transform: translateY(12px);
+  animation: entrar .55s cubic-bezier(.2,.7,.3,1) forwards;
+}
+.banda-centro > *:nth-child(1) { animation-delay: .04s; }
+.banda-centro > *:nth-child(2) { animation-delay: .12s; }
+.banda-centro > *:nth-child(3) { animation-delay: .2s; }
+.banda-centro > *:nth-child(4) { animation-delay: .28s; }
+.banda-centro > *:nth-child(5) { animation-delay: .36s; }
+@keyframes entrar { to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .banda-centro > * { animation: none; opacity: 1; transform: none; }
+}
+
+/* --- Ajustes finos que pide la nueva tipografia --- */
+
+.entradilla { font-size: 1.22rem; line-height: 1.55; }
+.marca { letter-spacing: 0.18em; }
+.cifra { font-size: 2.5rem; }
+.frase { font-size: 1.5rem; line-height: 1.35; }
+.preguntas summary { font-size: 1.2rem; }
+.dato b { font-size: 1.5rem; }

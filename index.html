@@ -12,6 +12,8 @@
 <meta property="og:image" content="https://gestion.a3bhub.cloud/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/a3b-logo.svg" type="image/svg+xml">
+<link rel="preload" href="/fuentes/instrumentserif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fuentes/instrumentsans-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/estilo.css">
 </head>
 <body>
@@ -67,6 +69,27 @@
     <p><a class="boton" href="#precio">Ver planes</a></p>
   </div>
 </header>
+
+<div class="puente">
+  <div class="vivo" id="vivo">
+      <div class="vivo-cabeza">
+        <span class="pulso"></span>
+        <strong id="vivo-titulo">Comprobando…</strong>
+        <span class="sello" id="vivo-sello"></span>
+      </div>
+      <div class="vivo-datos">
+        <div class="dato bien"><b id="vivo-codigo">—</b><span>respuesta HTTP</span></div>
+        <div class="dato"><b id="vivo-ms">—</b><span>tiempo de carga</span></div>
+        <div class="dato"><b id="vivo-cert">—</b><span>certificado</span></div>
+        <div class="dato"><b>3</b><span>vigilantes independientes</span></div>
+      </div>
+      <p style="font-size:.9rem;color:var(--apagado)">
+        Esto no es una captura: es el resultado real de la última comprobación de
+        <strong>esta misma página</strong>, hecha desde fuera del servidor por el mismo sistema que
+        vigilaría el tuyo.
+      </p>
+    </div>
+</div>
 
 <div class="envoltura portada-abajo">
 
@@ -143,25 +166,6 @@
           <small>Web caída, disco lleno, servidor inalcanzable, copia que no se completó.</small>
         </div>
       </div>
-    </div>
-
-    <div class="vivo" id="vivo">
-      <div class="vivo-cabeza">
-        <span class="pulso"></span>
-        <strong id="vivo-titulo">Comprobando…</strong>
-        <span class="sello" id="vivo-sello"></span>
-      </div>
-      <div class="vivo-datos">
-        <div class="dato bien"><b id="vivo-codigo">—</b><span>respuesta HTTP</span></div>
-        <div class="dato"><b id="vivo-ms">—</b><span>tiempo de carga</span></div>
-        <div class="dato"><b id="vivo-cert">—</b><span>certificado</span></div>
-        <div class="dato"><b>3</b><span>vigilantes independientes</span></div>
-      </div>
-      <p style="font-size:.9rem;color:var(--apagado)">
-        Esto no es una captura: es el resultado real de la última comprobación de
-        <strong>esta misma página</strong>, hecha desde fuera del servidor por el mismo sistema que
-        vigilaría el tuyo.
-      </p>
     </div>
   </section>
 
