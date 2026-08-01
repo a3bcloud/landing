@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" role="img"
+    aria-label="A3B Cloud">
+    <title>A3B Cloud</title>
+    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" stroke="#8b919c" stroke-width="1.7"
+        stroke-linejoin="round" stroke-linecap="round" />
+    <path d="M12.7 7.6 8.9 13.4h2.7l-.6 3.6 4-5.8h-2.7l.4-3.2z" fill="#2ce58c" />
+</svg>

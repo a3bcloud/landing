@@ -222,3 +222,74 @@ footer {
   display: flex; flex-direction: column; gap: 0.6rem;
 }
 footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+
+/* ============================================================
+   Portada: la banda de guardia
+   ------------------------------------------------------------
+   El unico bloque oscuro del sitio, y es deliberado: la maquina
+   vigila de noche, tu lees de dia. El verde intenso aparece solo
+   aqui y solo como senal de vida, no como decoracion.
+   ============================================================ */
+
+.banda {
+  background: #0a2118;
+  color: #eef4f0;
+  padding: 3.5rem 1.5rem 3rem;
+  border-bottom: 1px solid #123024;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Retícula tenue, como el fondo de una gráfica de monitorizacion. */
+.banda::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom, rgba(44, 229, 140, 0.05) 0 1px, transparent 1px 3.5rem);
+  pointer-events: none;
+}
+
+.banda > * { position: relative; }
+
+.banda-centro {
+  max-width: 46rem; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 1.6rem;
+}
+
+.banda .marca { color: #7fe0b0; }
+.banda .marca svg { width: 20px; height: 20px; }
+
+.banda h1 { color: #f4f9f6; }
+.banda .entradilla { color: #a9c4b7; max-width: 33rem; }
+.banda .entradilla strong { color: #f4f9f6; }
+
+.banda .boton { background: #2ce58c; color: #06170f; }
+.banda .boton:hover { filter: brightness(1.08); }
+.banda .boton:focus-visible { outline: 2px solid #f4f9f6; outline-offset: 3px; }
+
+/* --- Las 24 comprobaciones de la ultima jornada --- */
+
+.jornada { display: flex; flex-direction: column; gap: 0.7rem; }
+
+.marcas {
+  display: flex; gap: 4px; align-items: flex-end; height: 2.6rem;
+}
+.marcas i {
+  display: block; flex: 1 1 0; max-width: 14px; border-radius: 1px;
+  background: #2ce58c; height: 100%;
+  transform-origin: bottom; transform: scaleY(0.25); opacity: 0.75;
+  animation: subir 0.5s cubic-bezier(.2,.8,.3,1) forwards;
+}
+@keyframes subir { to { transform: scaleY(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .marcas i { animation: none; transform: scaleY(1); opacity: 1; }
+}
+
+.jornada figcaption {
+  font-family: var(--mono); font-size: 0.76rem; color: #7f9b8d;
+  letter-spacing: 0.02em; font-variant-numeric: tabular-nums;
+}
+.jornada figcaption b { color: #2ce58c; font-weight: 500; }
+
+/* La envoltura de la portada ya no lleva su propia cabecera arriba. */
+.envoltura.portada-abajo { padding-top: 4rem; gap: 4.5rem; }
