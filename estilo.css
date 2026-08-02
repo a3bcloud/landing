@@ -135,6 +135,7 @@ section { display: flex; flex-direction: column; gap: 1.4rem; }
 /* --- Planes --- */
 
 .planes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.planes-uno { grid-template-columns: minmax(0, 34rem); justify-content: center; }
 @media (max-width: 38rem) { .planes { grid-template-columns: 1fr; } }
 
 .plan {
