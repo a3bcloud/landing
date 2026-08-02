@@ -483,3 +483,144 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
    no repetir aqui para no pisar las reglas responsive. */
 .frase { font-size: 1.5rem; line-height: 1.35; }
 .preguntas summary { font-size: 1.2rem; }
+
+/* ============================================================
+   Vitrina: que puedes desplegar + panel real + numeros vivos
+   ------------------------------------------------------------
+   Bloque entre el hero y el argumentario textual, para el
+   visitante que scrollea rapido. Contenedor a 62rem para dar
+   aire al panel-mock, mas ancho que las 46rem del resto.
+   ============================================================ */
+
+.vitrina {
+  background: var(--papel);
+  padding: 4.5rem 1.5rem 4rem;
+  border-bottom: 1px solid var(--linea);
+}
+.vitrina-centro {
+  max-width: 62rem; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 5rem;
+}
+.bloque { display: flex; flex-direction: column; gap: 1.4rem; }
+.bloque h2 { max-width: 22ch; }
+
+/* Grid 2x2 de tarjetas de tecnologias. En mobil apila. */
+.tarjetas-4 {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+}
+@media (max-width: 44rem) { .tarjetas-4 { grid-template-columns: 1fr; } }
+
+.tarjeta {
+  background: var(--papel-alto); border: 1px solid var(--linea);
+  border-radius: 5px; padding: 1.6rem 1.5rem 1.4rem;
+  display: flex; flex-direction: column; gap: 0.8rem;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.tarjeta:hover { border-color: color-mix(in srgb, var(--acento) 55%, var(--linea)); transform: translateY(-2px); }
+.tarjeta-icono {
+  font-size: 1.9rem; line-height: 1;
+  width: 2.6rem; height: 2.6rem;
+  display: grid; place-items: center;
+  background: var(--acento-suave); border-radius: 5px;
+  filter: saturate(0.85);
+}
+.tarjeta h3 { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.005em; }
+.tarjeta p { color: var(--apagado); font-size: 0.94rem; line-height: 1.55; }
+.stack {
+  list-style: none; padding: 0; margin: 0.2rem 0 0;
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.stack li {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.02em;
+  color: var(--apagado);
+  background: var(--acento-suave);
+  padding: 0.22rem 0.55rem; border-radius: 3px;
+}
+
+/* Mock del panel: chrome de "ventana macOS" + sidebar + main con grid
+   de servicios. Todo con HTML+CSS, sin imagenes: escala nitido en cualquier
+   pantalla y no aumenta el peso de la pagina. */
+.mock {
+  margin: 1rem 0 0; padding: 0;
+  border: 1px solid var(--linea); border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--acento) 15%, transparent),
+    0 30px 60px -30px color-mix(in srgb, var(--acento) 25%, transparent),
+    0 15px 40px -20px rgba(0,0,0,0.6);
+  background: var(--papel-alto);
+}
+.mock-marco { display: flex; flex-direction: column; }
+.mock-barra {
+  background: color-mix(in srgb, var(--papel-alto) 65%, var(--papel));
+  padding: 0.55rem 0.9rem;
+  display: flex; align-items: center; gap: 0.4rem;
+  border-bottom: 1px solid var(--linea);
+}
+.mock-boton { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.mock-url {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--apagado);
+  margin-left: 0.7rem; padding: 0.15rem 0.6rem;
+  background: var(--papel); border-radius: 3px;
+  border: 1px solid var(--linea);
+}
+.mock-cuerpo { display: grid; grid-template-columns: 12rem 1fr; min-height: 22rem; }
+@media (max-width: 44rem) { .mock-cuerpo { grid-template-columns: 1fr; } .mock-sidebar { display: none; } }
+
+.mock-sidebar {
+  background: color-mix(in srgb, var(--papel-alto) 70%, var(--papel));
+  border-right: 1px solid var(--linea);
+  padding: 1rem 0.9rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.mock-marca {
+  font-family: var(--sans); font-weight: 700; font-size: 0.92rem;
+  color: var(--tinta);
+}
+.mock-marca span { display: block; font-weight: 400; font-size: 0.7rem; color: var(--apagado); margin-top: 0.15rem; }
+.mock-sidebar nav { display: flex; flex-direction: column; gap: 0.05rem; }
+.mock-sidebar nav a {
+  font-family: var(--sans); font-size: 0.82rem; color: var(--apagado);
+  text-decoration: none; padding: 0.4rem 0.6rem; border-radius: 3px;
+  display: block;
+}
+.mock-sidebar nav a.activo { color: var(--acento); background: var(--acento-suave); }
+
+.mock-main { padding: 1.4rem 1.5rem 1.6rem; }
+.mock-main h4 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; margin: 0 0 0.25rem; }
+.mock-main > p { color: var(--apagado); font-size: 0.86rem; margin: 0 0 1.4rem; }
+.mock-grupo { margin-top: 1rem; }
+.mock-grupo > span {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--apagado); display: block; margin-bottom: 0.55rem;
+}
+.mock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+@media (max-width: 44rem) { .mock-grid { grid-template-columns: repeat(2, 1fr); } }
+.mock-item {
+  background: var(--papel); border: 1px solid var(--linea);
+  border-radius: 4px; padding: 0.55rem 0.65rem;
+  font-family: var(--sans); font-size: 0.8rem; color: var(--tinta);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.mock-emoji { font-size: 0.95rem; }
+
+/* Numeros vivos honestos: banda de cuatro metricas grandes con etiqueta y
+   nota. Mismo lenguaje "boletin" que .vivo-datos, pero para métricas del
+   negocio (no del estado en tiempo real). */
+.grid-numeros {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+  border-top: 1px solid var(--linea); padding-top: 1.5rem;
+}
+@media (max-width: 44rem) { .grid-numeros { grid-template-columns: repeat(2, 1fr); } }
+.numero { display: flex; flex-direction: column; gap: 0.35rem; }
+.numero b {
+  font-family: var(--mono); font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 0.95;
+  color: var(--acento); letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.numero span {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--tinta);
+}
+.numero small { color: var(--apagado); font-size: 0.82rem; line-height: 1.5; margin-top: 0.15rem; }

@@ -92,6 +92,159 @@
     </div>
 </div>
 
+<!-- ============================================================
+     Vitrina: que puedes desplegar + panel real + numeros vivos
+     ------------------------------------------------------------
+     Va antes del argumentario textual para que un visitante que
+     scrollea rapido vea DE QUE va esto sin tener que leer prosa:
+     iconos de tecnologias, mock del panel real, y numeros
+     honestos de esta misma pagina.
+     ============================================================ -->
+
+<section class="vitrina">
+  <div class="vitrina-centro">
+
+    <div class="bloque despliegue">
+      <p class="rotulo">Qué puedes desplegar</p>
+      <h2>Cualquier cosa que corra en Docker<span class="punto-acento">.</span></h2>
+      <div class="tarjetas-4">
+        <article class="tarjeta">
+          <div class="tarjeta-icono" aria-hidden="true">🚀</div>
+          <h3>Aplicaciones desde Git</h3>
+          <p>Node.js, PHP, Python, Ruby, Elixir, Rust, Go, Bun, Deno, Java, .NET.
+            Detecta el lenguaje y monta la imagen sin escribir Dockerfile.</p>
+          <ul class="stack">
+            <li>Node</li><li>PHP</li><li>Python</li><li>Ruby</li>
+            <li>Elixir</li><li>Rust</li><li>Go</li><li>Bun</li>
+          </ul>
+        </article>
+
+        <article class="tarjeta">
+          <div class="tarjeta-icono" aria-hidden="true">🐳</div>
+          <h3>Cualquier imagen Docker</h3>
+          <p>Dockerfile propio, imagen del registry, o Compose completo con
+            varios servicios. Si corre en Docker, corre aquí.</p>
+          <ul class="stack">
+            <li>Dockerfile</li><li>Docker&nbsp;Image</li><li>Compose</li>
+          </ul>
+        </article>
+
+        <article class="tarjeta">
+          <div class="tarjeta-icono" aria-hidden="true">🗄️</div>
+          <h3>Bases de datos gestionadas</h3>
+          <p>Un click, backup automático a S3 y healthcheck de serie.
+            Ocho motores soportados.</p>
+          <ul class="stack">
+            <li>PostgreSQL</li><li>MySQL</li><li>MariaDB</li><li>MongoDB</li>
+            <li>Redis</li><li>Clickhouse</li><li>KeyDB</li><li>Dragonfly</li>
+          </ul>
+        </article>
+
+        <article class="tarjeta">
+          <div class="tarjeta-icono" aria-hidden="true">⚡</div>
+          <h3>200+ servicios preconfigurados</h3>
+          <p>Ghost, WordPress, n8n, Plausible, Umami, Uptime Kuma, NocoDB,
+            Directus, Meilisearch, Wiki.js… un click y funcionando.</p>
+          <ul class="stack">
+            <li>Ghost</li><li>WordPress</li><li>n8n</li><li>Plausible</li>
+            <li>Directus</li><li>NocoDB</li><li>Uptime&nbsp;Kuma</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="bloque panel-mock">
+      <p class="rotulo">Y el panel donde lo gestionas</p>
+      <h2>Este es el panel real<span class="punto-acento">.</span></h2>
+      <p class="entradilla">
+        Construido sobre <a href="https://github.com/coollabsio/coolify">Coolify</a>,
+        código abierto Apache&nbsp;2.0. Si un día decides prescindir de nosotros,
+        el panel se queda contigo y sigue funcionando.
+      </p>
+
+      <figure class="mock" aria-label="Vista simplificada del catalogo de recursos que se pueden desplegar">
+        <div class="mock-marco">
+          <div class="mock-barra">
+            <span class="mock-boton" style="background:#ff5f57"></span>
+            <span class="mock-boton" style="background:#ffbd2e"></span>
+            <span class="mock-boton" style="background:#28c93f"></span>
+            <span class="mock-url">app.a3bhub.cloud</span>
+          </div>
+          <div class="mock-cuerpo">
+            <aside class="mock-sidebar">
+              <div class="mock-marca">A3B Cloud <span>v4.2.0</span></div>
+              <nav>
+                <a class="activo">Projects</a>
+                <a>Servers</a>
+                <a>Sources</a>
+                <a>Destinations</a>
+                <a>S3 Storages</a>
+                <a>Shared Variables</a>
+                <a>Notifications</a>
+                <a>Terminal</a>
+              </nav>
+            </aside>
+            <main class="mock-main">
+              <h4>New Resource</h4>
+              <p>Deploy resources, like Applications, Databases, Services…</p>
+              <div class="mock-grupo">
+                <span>Applications</span>
+                <div class="mock-grid">
+                  <div class="mock-item"><span class="mock-emoji">🌿</span> Public Repository</div>
+                  <div class="mock-item"><span class="mock-emoji">🐙</span> Private (GitHub App)</div>
+                  <div class="mock-item"><span class="mock-emoji">🔑</span> Private (Deploy Key)</div>
+                  <div class="mock-item"><span class="mock-emoji">🐳</span> Dockerfile</div>
+                  <div class="mock-item"><span class="mock-emoji">📦</span> Docker Compose</div>
+                  <div class="mock-item"><span class="mock-emoji">🖼️</span> Docker Image</div>
+                </div>
+              </div>
+              <div class="mock-grupo">
+                <span>Databases</span>
+                <div class="mock-grid">
+                  <div class="mock-item"><span class="mock-emoji">🐘</span> PostgreSQL</div>
+                  <div class="mock-item"><span class="mock-emoji">🐬</span> MySQL</div>
+                  <div class="mock-item"><span class="mock-emoji">🦭</span> MariaDB</div>
+                  <div class="mock-item"><span class="mock-emoji">🍃</span> MongoDB</div>
+                  <div class="mock-item"><span class="mock-emoji">🟥</span> Redis</div>
+                  <div class="mock-item"><span class="mock-emoji">🏠</span> Clickhouse</div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="bloque numeros">
+      <p class="rotulo">Lo que la máquina hace, cuantificado</p>
+      <h2>Números que se pueden comprobar<span class="punto-acento">.</span></h2>
+      <div class="grid-numeros">
+        <div class="numero">
+          <b>24</b>
+          <span>Comprobaciones diarias</span>
+          <small>Desde fuera del servidor, cada hora.</small>
+        </div>
+        <div class="numero">
+          <b>30</b>
+          <span>Días de copias en R2</span>
+          <small>Cifradas, con la clave separada del volcado.</small>
+        </div>
+        <div class="numero">
+          <b>3</b>
+          <span>Vigilantes independientes</span>
+          <small>Servidor, GitHub Actions y tu propio equipo.</small>
+        </div>
+        <div class="numero">
+          <b id="num-dias-sin-incidentes">—</b>
+          <span>Días sin incidentes</span>
+          <small>De <em>esta</em> página, no de la media del sector.</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <div class="envoltura portada-abajo">
 
     <section>
@@ -402,6 +555,11 @@
     titulo.textContent = e.correcto ? 'Todo correcto' : 'Con incidencias: ' + (e.problemas || []).join('; ');
     var mins = Math.round(horas * 60);
     sello.textContent = 'comprobado hace ' + (mins < 1 ? 'menos de un minuto' : mins + ' min');
+
+    // Numero "Dias sin incidentes" en la banda de la vitrina. Se lee del propio estado.json
+    // (campo dias_sin_incidentes). Si el campo aun no existe, cae a "—" en vez de mentir.
+    var dias = document.getElementById('num-dias-sin-incidentes');
+    if (dias) dias.textContent = (typeof e.dias_sin_incidentes === 'number') ? e.dias_sin_incidentes : '—';
   }).catch(function () { cae('No se pudo leer el estado'); });
 })();
 </script>
