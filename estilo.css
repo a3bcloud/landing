@@ -23,10 +23,10 @@
 /* A3B Cloud — hoja de estilo del sitio.
    Un solo archivo para las cuatro paginas: si la marca cambia, cambia en un sitio. */
 
-/* Dark theme forzado, como el panel y como el propio Coolify: el sitio y el
-   producto hablan el mismo idioma visual y no cambian entre light/dark segun
-   el sistema. --papel es un negro casi puro para ganar contraste con el
-   acento verde, --papel-alto sube apenas un peldano para las tarjetas. */
+/* Dark theme forzado, coherente con el propio panel: el sitio y el producto
+   hablan el mismo idioma visual y no cambian entre light/dark segun el sistema.
+   --papel es un negro casi puro para ganar contraste con el acento verde,
+   --papel-alto sube apenas un peldano para las tarjetas. */
 :root {
   --tinta: #eaf3ec;
   --papel: #06090a;
@@ -69,8 +69,8 @@ a:focus-visible, .boton:focus-visible { outline: 2px solid var(--tinta); outline
 .envoltura.prosa { gap: 2rem; padding-top: 2rem; }
 
 h1, h2, h3 { font-family: var(--serif); font-weight: 400; text-wrap: balance; margin: 0; }
-/* Hero al estilo Coolify: masivo, muy ancho, con .punto-acento verde al final
-   de cada frase como sello reconocible (equivale al punto amarillo de Coolify). */
+/* Hero masivo y muy ancho, con .punto-acento verde al final de cada frase
+   como sello reconocible de la marca. */
 h1 { font-size: clamp(2.8rem, 9vw, 5.4rem); line-height: 1.02; letter-spacing: -0.025em; }
 h2 { font-size: clamp(1.7rem, 4.2vw, 2.3rem); line-height: 1.15; letter-spacing: -0.01em; }
 h3 { font-size: 1.3rem; }
@@ -118,7 +118,7 @@ section { display: flex; flex-direction: column; gap: 1.4rem; }
 .barra nav { display: flex; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap; }
 .barra nav a { color: var(--apagado); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; }
 .barra nav a:hover, .barra nav a[aria-current="page"] { color: var(--acento); }
-/* Iconos emoji delante de cada link — al estilo coolify.io (❤️ Contributors, etc.). */
+/* Iconos emoji delante de cada link para ganar reconocimiento y calidez. */
 .barra nav .ico { font-size: 0.95em; line-height: 1; filter: saturate(0.85); }
 
 /* --- Portada --- */
@@ -213,8 +213,8 @@ section { display: flex; flex-direction: column; gap: 1.4rem; }
 .prueba b { color: var(--senal); font-weight: 600; }
 
 .llamada { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-start; }
-/* CTA prominente estilo Coolify: bloque solido, tipografia sans bold, alto
-   contraste. Aparece grande en el hero y en el cierre. */
+/* CTA prominente: bloque solido, tipografia sans bold, alto contraste.
+   Aparece grande en el hero y en el cierre. */
 .boton {
   display: inline-flex; align-items: center; gap: 0.6rem;
   background: var(--acento); color: #06090a;
@@ -298,8 +298,8 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 
 .banda > * { position: relative; }
 
-/* Ancho ampliado (46 -> 58rem) para que el titulo masivo respire, como en
-   coolify.io. El resto del sitio conserva las 46rem para no romper la lectura. */
+/* Ancho ampliado (46 -> 58rem) para que el titulo masivo respire. El resto
+   del sitio conserva las 46rem para no romper la lectura de la prosa. */
 .banda-centro {
   max-width: 58rem; margin: 0 auto;
   display: flex; flex-direction: column; gap: 1.8rem;
