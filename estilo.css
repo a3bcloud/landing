@@ -79,9 +79,18 @@ p  { margin: 0; }
 
 section { display: flex; flex-direction: column; gap: 1.4rem; }
 
+/* Kicker de seccion al estilo Bloomberg/Ghost: pequeno rectangulo verde a la
+   izquierda + texto mono en versalitas apagado. Marca cada bloque como pieza
+   editorial, no como bloque de marketing generico. */
 .rotulo {
-  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--apagado);
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--acento);
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  padding-left: 0; position: relative;
+}
+.rotulo::before {
+  content: ""; display: inline-block;
+  width: 0.85rem; height: 2px; background: var(--acento);
 }
 
 /* --- Cabecera y navegacion --- */
@@ -151,11 +160,15 @@ section { display: flex; flex-direction: column; gap: 1.4rem; }
   text-transform: uppercase; color: var(--acento);
   background: var(--acento-suave); padding: 0.2rem 0.45rem; border-radius: 2px;
 }
+/* El precio como titular: mono muy grande, verde, protagonista de la tarjeta —
+   los numeros son la voz principal en el estilo Bloomberg/Ghost. */
 .cifra {
-  font-family: var(--mono); font-size: 2.2rem; line-height: 1;
-  letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  font-family: var(--mono); font-weight: 700;
+  font-size: clamp(3rem, 8vw, 4.5rem); line-height: 0.95;
+  letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
+  color: var(--acento);
 }
-.cifra em { font-style: normal; font-size: 0.85rem; color: var(--apagado); letter-spacing: 0; }
+.cifra em { font-style: normal; font-size: 0.85rem; color: var(--apagado); letter-spacing: 0; font-weight: 400; }
 .plan .resumen { font-size: 0.95rem; color: var(--apagado); }
 .plan ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
 .plan li { display: grid; grid-template-columns: 1.2rem 1fr; gap: 0.6rem; font-size: 0.95rem; align-items: start; }
@@ -350,15 +363,22 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
   font-family: var(--mono); font-size: 0.72rem; color: var(--apagado);
   margin-left: auto; font-variant-numeric: tabular-nums;
 }
+/* Datos como titulares: en Bloomberg los numeros ganan a las palabras.
+   Mono grande, tabular, verde señal para el estado bueno. Debajo, la etiqueta
+   en versalitas mini como en un boletín financiero. */
 .vivo-datos {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1.2rem;
 }
-.dato { display: flex; flex-direction: column; gap: 0.15rem; }
+.dato { display: flex; flex-direction: column; gap: 0.3rem; padding-top: 0.4rem; border-top: 1px solid var(--linea); }
 .dato b {
-  font-family: var(--mono); font-size: 1.35rem; font-weight: 500;
-  font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+  font-family: var(--mono); font-size: clamp(1.9rem, 3.5vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  font-variant-numeric: tabular-nums; letter-spacing: -0.03em;
 }
-.dato span { font-size: 0.78rem; color: var(--apagado); }
+.dato span {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--apagado);
+  text-transform: uppercase; letter-spacing: 0.14em;
+}
 .dato.bien b { color: var(--senal); }
 
 /* --- Comparativa honesta --- */
@@ -459,7 +479,7 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 
 .entradilla { font-size: 1.22rem; line-height: 1.55; }
 .marca { letter-spacing: 0.18em; }
-.cifra { font-size: 2.5rem; }
+/* .cifra y .dato b se definen arriba con tipografia grande estilo Bloomberg;
+   no repetir aqui para no pisar las reglas responsive. */
 .frase { font-size: 1.5rem; line-height: 1.35; }
 .preguntas summary { font-size: 1.2rem; }
-.dato b { font-size: 1.5rem; }
