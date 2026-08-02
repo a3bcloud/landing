@@ -23,29 +23,25 @@
 /* A3B Cloud — hoja de estilo del sitio.
    Un solo archivo para las cuatro paginas: si la marca cambia, cambia en un sitio. */
 
+/* Dark theme forzado, como el panel y como el propio Coolify: el sitio y el
+   producto hablan el mismo idioma visual y no cambian entre light/dark segun
+   el sistema. --papel es un negro casi puro para ganar contraste con el
+   acento verde, --papel-alto sube apenas un peldano para las tarjetas. */
 :root {
-  --tinta:        #0b1f17;
-  --papel:        #f5f7f4;
-  --papel-alto:   #ffffff;
-  --acento:       #17784b;
-  --acento-suave: #e3efe8;
-  --senal:        #12a35f;
-  --ambar:        #8a5a06;
-  --ambar-suave:  #f7f0e0;
-  --apagado:      #5d6b62;
-  --linea:        #dbe3dd;
+  --tinta: #eaf3ec;
+  --papel: #06090a;
+  --papel-alto: #0d1512;
+  --acento: #2ce58c;
+  --acento-suave: #10241a;
+  --senal: #2ce58c;
+  --ambar: #ffb84a;
+  --ambar-suave: #241a0e;
+  --apagado: #8ea099;
+  --linea: #172221;
 
   --serif: "Instrument Serif", Georgia, serif;
   --sans:  "Instrument Sans", system-ui, sans-serif;
   --mono:  "JetBrains Mono", ui-monospace, Menlo, monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --tinta: #e6efe9; --papel: #0c1310; --papel-alto: #121a16;
-    --acento: #4fd399; --acento-suave: #16281f; --senal: #2ce58c;
-    --ambar: #d9a441; --ambar-suave: #241d0e; --apagado: #90a096; --linea: #1e2b24;
-  }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -73,10 +69,13 @@ a:focus-visible, .boton:focus-visible { outline: 2px solid var(--tinta); outline
 .envoltura.prosa { gap: 2rem; padding-top: 2rem; }
 
 h1, h2, h3 { font-family: var(--serif); font-weight: 400; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.6rem, 7.5vw, 4.4rem); line-height: 1.03; letter-spacing: -0.02em; }
+/* Hero al estilo Coolify: masivo, muy ancho, con .punto-acento verde al final
+   de cada frase como sello reconocible (equivale al punto amarillo de Coolify). */
+h1 { font-size: clamp(2.8rem, 9vw, 5.4rem); line-height: 1.02; letter-spacing: -0.025em; }
 h2 { font-size: clamp(1.7rem, 4.2vw, 2.3rem); line-height: 1.15; letter-spacing: -0.01em; }
 h3 { font-size: 1.3rem; }
 p  { margin: 0; }
+.punto-acento { color: var(--acento); font-family: inherit; }
 
 section { display: flex; flex-direction: column; gap: 1.4rem; }
 
@@ -107,9 +106,11 @@ section { display: flex; flex-direction: column; gap: 1.4rem; }
 }
 @media (prefers-reduced-motion: reduce) { .pulso { animation: none; } }
 
-.barra nav { display: flex; gap: 1.25rem; font-size: 0.9rem; }
-.barra nav a { color: var(--apagado); text-decoration: none; }
+.barra nav { display: flex; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap; }
+.barra nav a { color: var(--apagado); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; }
 .barra nav a:hover, .barra nav a[aria-current="page"] { color: var(--acento); }
+/* Iconos emoji delante de cada link — al estilo coolify.io (❤️ Contributors, etc.). */
+.barra nav .ico { font-size: 0.95em; line-height: 1; filter: saturate(0.85); }
 
 /* --- Portada --- */
 
@@ -199,12 +200,22 @@ section { display: flex; flex-direction: column; gap: 1.4rem; }
 .prueba b { color: var(--senal); font-weight: 600; }
 
 .llamada { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-start; }
+/* CTA prominente estilo Coolify: bloque solido, tipografia sans bold, alto
+   contraste. Aparece grande en el hero y en el cierre. */
 .boton {
-  display: inline-block; background: var(--acento); color: var(--papel);
-  font-weight: 600; font-size: 1rem; padding: 0.85rem 1.6rem;
-  border-radius: 3px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--acento); color: #06090a;
+  font-family: var(--sans); font-weight: 700; font-size: 1.05rem;
+  padding: 1rem 1.8rem; border-radius: 4px; text-decoration: none;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--acento) 40%, transparent);
 }
-.boton:hover { filter: brightness(1.1); }
+.boton:hover {
+  filter: brightness(1.08); transform: translateY(-1px);
+  box-shadow: 0 6px 24px -8px color-mix(in srgb, var(--acento) 50%, transparent);
+}
+.boton .flecha { transition: transform 0.15s ease; }
+.boton:hover .flecha { transform: translateX(3px); }
 
 /* --- Paginas de texto largo: terminos, privacidad --- */
 
@@ -255,10 +266,10 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
    ============================================================ */
 
 .banda {
-  background: #0a2118;
-  color: #eef4f0;
-  padding: 3.5rem 1.5rem 3rem;
-  border-bottom: 1px solid #123024;
+  background: var(--papel);
+  color: var(--tinta);
+  padding: 5rem 1.5rem 4rem;
+  border-bottom: 1px solid var(--linea);
   position: relative;
   overflow: hidden;
 }
@@ -268,16 +279,21 @@ footer nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
   content: "";
   position: absolute; inset: 0;
   background-image: repeating-linear-gradient(
-    to bottom, rgba(44, 229, 140, 0.05) 0 1px, transparent 1px 3.5rem);
+    to bottom, rgba(44, 229, 140, 0.04) 0 1px, transparent 1px 4rem);
   pointer-events: none;
 }
 
 .banda > * { position: relative; }
 
+/* Ancho ampliado (46 -> 58rem) para que el titulo masivo respire, como en
+   coolify.io. El resto del sitio conserva las 46rem para no romper la lectura. */
 .banda-centro {
-  max-width: 46rem; margin: 0 auto;
-  display: flex; flex-direction: column; gap: 1.6rem;
+  max-width: 58rem; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 1.8rem;
+  text-align: center; align-items: center;
 }
+.banda-centro h1 { max-width: 22ch; }
+.banda-centro .entradilla { max-width: 40rem; margin: 0 auto; }
 
 .banda .marca { color: #7fe0b0; }
 .banda .marca svg { width: 20px; height: 20px; }
