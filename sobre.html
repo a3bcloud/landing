@@ -1,123 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cómo trabajamos - A3B Cloud</title>
+<title>Cómo trabajamos — A3B Cloud</title>
 <meta name="description" content="Qué está montado de verdad, qué se comprueba cada mes, y los límites del servicio dichos por delante.">
-<meta name="theme-color" content="#06090a">
-<meta property="og:title" content="Cómo trabajamos - A3B Cloud">
+<meta name="theme-color" content="#08090b">
+<meta property="og:title" content="Cómo trabajamos — A3B Cloud">
 <meta property="og:description" content="Lo que se puede comprobar, y lo que no prometemos.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://a3bhub.cloud/v3-hero.png">
 <link rel="icon" href="/a3b-logo.svg" type="image/svg+xml">
-<link rel="preload" href="/fuentes/instrumentsans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/estilo-v3.css">
 </head>
 <body>
-<div class="envoltura prosa">
-  <div class="barra">
-    <a class="marca" href="/"><span class="pulso"></span> A3B Cloud</a>
-    <nav>
-    <a href="/">Inicio</a>
-    <a href="/sobre.html" aria-current="page"><span class="ico" aria-hidden="true">🛠</span> Cómo trabajamos</a>
-    <a href="/soporte.html"><span class="ico" aria-hidden="true">💬</span> Soporte</a>
-    <a href="/terminos.html"><span class="ico" aria-hidden="true">📄</span> Términos</a>
-    <a href="/privacidad.html"><span class="ico" aria-hidden="true">🔒</span> Privacidad</a>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="/"><span class="live" aria-hidden="true"></span>A3B&nbsp;Cloud</a>
+    <nav class="nav-links">
+      <a href="/">Inicio</a>
+      <a href="/sobre.html" aria-current="page"><span class="ico" aria-hidden="true">🛠</span> Cómo trabajamos</a>
+      <a href="/soporte.html"><span class="ico" aria-hidden="true">💬</span> Soporte</a>
+      <a href="/terminos.html"><span class="ico" aria-hidden="true">📄</span> Términos</a>
+      <a href="/privacidad.html"><span class="ico" aria-hidden="true">🔒</span> Privacidad</a>
     </nav>
   </div>
+</header>
 
-  <h1>Cómo trabajamos</h1>
+<main class="section">
+  <div class="wrap prose">
+    <span class="kicker">Manual del servicio</span>
+    <h1>Cómo trabajamos</h1>
 
-  <p class="entradilla">
-    Vas a darle acceso de administrador a tu servidor a alguien que acabas de conocer. Lo mínimo
-    es que te enseñemos qué hacemos exactamente, cada cuánto, y qué no vamos a hacer.
-  </p>
+    <p class="lead">Vas a darle acceso de administrador a tu servidor a alguien que acabas de conocer. Lo mínimo es que te enseñemos qué hacemos exactamente, cada cuánto, y qué no vamos a hacer.</p>
 
-  <hr>
+    <hr>
 
-  <h2>Lo que está montado, y se puede comprobar</h2>
+    <h2>Lo que está montado, y se puede comprobar</h2>
 
-  <p>
-    Prometer vigilancia es fácil. Esto es lo que hay funcionando hoy, sobre la misma
-    infraestructura que gestionaría tu servidor — y una parte la puedes verificar tú mismo sin
-    preguntarnos:
-  </p>
+    <p>Prometer vigilancia es fácil. Esto es lo que hay funcionando hoy, sobre la misma infraestructura que gestionaría tu servidor — y una parte la puedes verificar tú mismo sin preguntarnos:</p>
 
-  <ul>
-    <li><strong>Copias diarias con restauración ensayada.</strong> No solo se hacen: cada mes se
-      restaura una de verdad para comprobar que sirve, incluida la comprobación de que los datos
-      cifrados se descifran. Un volcado que se restaura pero queda ilegible es un volcado inútil,
-      y eso solo se descubre probándolo. Recibes el resultado por escrito, salga bien o mal.</li>
-    <li><strong>Vigilancia externa cada hora</strong>, alojada fuera del servidor. Si el servidor
-      cae, el aviso sale igual — porque quien avisa no vive dentro. En
-      <a href="/">la portada</a> está publicado el resultado real de la última comprobación de
-      esta misma página.</li>
-    <li><strong>Seguimiento semanal de avisos de seguridad</strong> del software que hace
-      funcionar el panel, con comprobación automática de si tu instalación está afectada.</li>
-    <li><strong>Servidor endurecido</strong>: tres puertos abiertos a Internet, HTTPS obligatorio
-      con HSTS, actualizaciones controladas en vez de automáticas y sorpresa.</li>
-    <li><strong>Copias fuera del servidor</strong>, en un proveedor distinto del que aloja el
-      panel, cifradas y con la clave guardada aparte. Una copia robada sin esa clave es
-      ilegible.</li>
-  </ul>
+    <ul>
+      <li><strong>Copias diarias con restauración ensayada.</strong> No solo se hacen: cada mes se restaura una de verdad para comprobar que sirve, incluida la comprobación de que los datos cifrados se descifran. Un volcado que se restaura pero queda ilegible es un volcado inútil, y eso solo se descubre probándolo. Recibes el resultado por escrito, salga bien o mal.</li>
+      <li><strong>Vigilancia externa cada hora</strong>, alojada fuera del servidor. Si el servidor cae, el aviso sale igual — porque quien avisa no vive dentro. En <a href="/">la portada</a> está publicado el resultado real de la última comprobación de esta misma página.</li>
+      <li><strong>Seguimiento semanal de avisos de seguridad</strong> del software que hace funcionar el panel, con comprobación automática de si tu instalación está afectada.</li>
+      <li><strong>Servidor endurecido</strong>: tres puertos abiertos a Internet, HTTPS obligatorio con HSTS, actualizaciones controladas en vez de automáticas y sorpresa.</li>
+      <li><strong>Copias fuera del servidor</strong>, en un proveedor distinto del que aloja el panel, cifradas y con la clave guardada aparte. Una copia robada sin esa clave es ilegible.</li>
+    </ul>
 
-  <p>
-    Esta misma página corre sobre la plataforma que te ofrecemos, con su dominio y su certificado
-    emitidos por ella, y está bajo la misma vigilancia que tendría tu servidor. Si alguna vez la
-    ves caída, ya sabes lo que vale el servicio.
-  </p>
+    <p>Esta misma página corre sobre la plataforma que te ofrecemos, con su dominio y su certificado emitidos por ella, y está bajo la misma vigilancia que tendría tu servidor. Si alguna vez la ves caída, ya sabes lo que vale el servicio.</p>
 
-  <h2>Somos pequeños, y eso tiene dos caras</h2>
+    <h2>Somos pequeños, y eso tiene dos caras</h2>
 
-  <p>
-    <strong>A3B Cloud LLC</strong> es una empresa pequeña y nueva. Preferimos decirlo nosotros a
-    que lo descubras tú.
-  </p>
+    <p><strong>A3B Cloud LLC</strong> es una empresa pequeña y nueva. Preferimos decirlo nosotros a que lo descubras tú.</p>
 
-  <p>
-    A favor: hablas siempre con quien toma las decisiones, nadie te pasa a otro departamento, y
-    cuando pides algo no entra en una cola detrás de otros mil clientes.
-  </p>
+    <p>A favor: hablas siempre con quien toma las decisiones, nadie te pasa a otro departamento, y cuando pides algo no entra en una cola detrás de otros mil clientes.</p>
 
-  <p>En contra, y sin adornos:</p>
+    <p>En contra, y sin adornos:</p>
 
-  <ul>
-    <li><strong>No hay guardia nocturna.</strong> Los avisos llegan siempre; la respuesta
-      garantizada es de lunes a viernes. Si necesitas cobertura de 24 horas por contrato,
-      necesitas una empresa con turnos — y te lo diremos antes de venderte nada.</li>
-    <li><strong>Atendemos a pocos clientes a propósito.</strong> La vigilancia solo vale algo si
-      de verdad hay alguien mirando; con cincuenta clientes dejaría de haberlo.</li>
-    <li><strong>Estamos empezando.</strong> No hay todavía una lista de clientes que responda por
-      nosotros. Por eso las primeras plazas tienen precio de por vida: es lo que se paga por
-      entrar antes que nadie.</li>
-  </ul>
+    <ul>
+      <li><strong>No hay guardia nocturna.</strong> Los avisos llegan siempre; la respuesta garantizada es de lunes a viernes. Si necesitas cobertura de 24 horas por contrato, necesitas una empresa con turnos — y te lo diremos antes de venderte nada.</li>
+      <li><strong>Atendemos a pocos clientes a propósito.</strong> La vigilancia solo vale algo si de verdad hay alguien mirando; con cincuenta clientes dejaría de haberlo.</li>
+      <li><strong>Estamos empezando.</strong> No hay todavía una lista de clientes que responda por nosotros. Por eso las primeras plazas tienen precio de por vida: es lo que se paga por entrar antes que nadie.</li>
+    </ul>
 
-  <h2>Tu servidor sigue siendo tuyo</h2>
+    <h2>Tu servidor sigue siendo tuyo</h2>
 
-  <p>
-    Esto no es una cláusula, es el diseño del servicio: la cuenta con tu proveedor es tuya, el
-    acceso de administrador lo conservas, y <strong>nunca seremos los únicos administradores de
-    tu máquina</strong>. Si un día decides dejarlo, todo se queda donde está y funcionando. No hay
-    nada que rescatar ni que migrar.
-  </p>
+    <p>Esto no es una cláusula, es el diseño del servicio: la cuenta con tu proveedor es tuya, el acceso de administrador lo conservas, y <strong>nunca seremos los únicos administradores de tu máquina</strong>. Si un día decides dejarlo, todo se queda donde está y funcionando. No hay nada que rescatar ni que migrar.</p>
 
-  <p>
-    Es lo contrario de lo que ofrece un alojamiento gestionado, y es deliberado: preferimos que te
-    quedes porque el servicio te compensa, no porque salir sea caro.
-  </p>
+    <p>Es lo contrario de lo que ofrece un alojamiento gestionado, y es deliberado: preferimos que te quedes porque el servicio te compensa, no porque salir sea caro.</p>
 
-  <p>Está escrito en los <a href="/terminos.html">términos</a>, no solo aquí.</p>
+    <p>Está escrito en los <a href="/terminos.html">términos</a>, no solo aquí.</p>
 
-  <h2>Hablemos antes de que pagues</h2>
+    <h2>Hablemos antes de que pagues</h2>
 
-  <p>
-    Cuéntanos qué tienes montado y te diremos con franqueza si esto te sirve. Si tu caso encaja
-    mejor con otra cosa, lo diremos: preferimos no cobrarte a tenerte descontento tres meses.
-  </p>
+    <p>Cuéntanos qué tienes montado y te diremos con franqueza si esto te sirve. Si tu caso encaja mejor con otra cosa, lo diremos: preferimos no cobrarte a tenerte descontento tres meses.</p>
 
-  <p><a class="boton" href="mailto:support@a3bhub.cloud?subject=Consulta%20-%20A3B%20Cloud">Escríbenos</a></p>
+    <p class="btn-cta"><a class="btn btn-primary btn-big" href="mailto:support@a3bhub.cloud?subject=Consulta%20-%20A3B%20Cloud">Escríbenos</a></p>
+  </div>
+</main>
 
-  <footer>
-    <div>A3B Cloud LLC · Gestión de servidores</div>
+<footer class="site">
+  <div class="wrap">
+    <div class="fbrand">A3B Cloud LLC · Gestión de servidores</div>
     <nav>
       <a href="/">Inicio</a>
       <a href="/sobre.html"><span class="ico" aria-hidden="true">🛠</span> Cómo trabajamos</a>
@@ -125,7 +94,8 @@
       <a href="/terminos.html"><span class="ico" aria-hidden="true">📄</span> Términos</a>
       <a href="/privacidad.html"><span class="ico" aria-hidden="true">🔒</span> Privacidad</a>
     </nav>
-  </footer>
-</div>
+  </div>
+</footer>
+
 </body>
 </html>
