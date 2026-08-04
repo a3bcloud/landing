@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gracias — A3B Cloud</title>
+<meta name="description" content="Tu prueba de 14 días está iniciada. Revisa tu correo para definir la contraseña y acceder al panel.">
+<meta name="theme-color" content="#0D1211">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090b;--bg-2:#0d0f13;--surface:#111419;--text:#e9eaee;--muted:#8b919c;--faint:#767d8a;--signal:#2ce58c;--border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.14);--mono:"JetBrains Mono",ui-monospace,monospace;--disp:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--signal);text-decoration:none}
+a:hover{text-decoration:underline}
+header{padding:20px 24px;border-bottom:1px solid var(--border)}
+header .brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;font-size:17px;color:var(--text)}
+header img{width:30px;height:30px}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px}
+.card{max-width:560px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:56px 40px}
+.check{width:64px;height:64px;margin:0 auto 24px;border-radius:50%;background:rgba(44,229,140,.12);display:flex;align-items:center;justify-content:center;color:var(--signal);font-size:32px}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(28px,4vw,38px);letter-spacing:-.02em;line-height:1.1;margin-bottom:18px}
+p{color:var(--muted);margin-bottom:16px}
+.step{display:flex;gap:12px;text-align:left;background:var(--bg);border:1px solid var(--border);padding:14px 16px;border-radius:10px;margin:10px 0;color:var(--text);font-size:15px}
+.step-n{font-family:var(--mono);font-size:11px;color:var(--signal);font-weight:700;padding-top:2px;flex-shrink:0}
+.steps{margin:24px 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;font-family:var(--body);font-weight:600;font-size:15px;border-radius:10px;transition:all .2s;border:1px solid var(--border-2)}
+.btn-primary{background:var(--signal);color:#04130b;border-color:var(--signal)}
+.btn-primary:hover{background:#5FF0B0;text-decoration:none}
+.btn-ghost{background:transparent;color:var(--text)}
+.btn-ghost:hover{border-color:var(--signal);color:var(--signal);text-decoration:none}
+.session{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:32px;word-break:break-all}
+footer{padding:24px;text-align:center;color:var(--faint);font-size:13px;border-top:1px solid var(--border)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="/">
+    <img src="assets/icono-oscuro.svg" alt="">
+    A3B&nbsp;Cloud
+  </a>
+</header>
+
+<main>
+  <div class="card">
+    <div class="check" aria-hidden="true">✓</div>
+    <h1>Pago iniciado, tu prueba está activa</h1>
+    <p>Stripe ha validado tu tarjeta. Los primeros 14 días son gratis — el primer cargo es el día 15. Cancela cuando quieras desde el panel.</p>
+
+    <div class="steps">
+      <div class="step"><span class="step-n">01</span><span>Revisa tu correo. Te acabamos de enviar un enlace para <strong>definir tu contraseña</strong>.</span></div>
+      <div class="step"><span class="step-n">02</span><span>Entra al panel en <a href="https://app.a3bhub.cloud">app.a3bhub.cloud</a> y añade tu primer servidor.</span></div>
+      <div class="step"><span class="step-n">03</span><span>Si algo no llega en 5 minutos, revisa spam o escribe a <a href="mailto:support@a3bhub.cloud">support@a3bhub.cloud</a>.</span></div>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://app.a3bhub.cloud">Ir al panel</a>
+      <a class="btn btn-ghost" href="mailto:support@a3bhub.cloud?subject=Bienvenida%20-%20A3B%20Cloud">Escribir a soporte</a>
+    </div>
+
+    <p class="session" id="sessionRef"></p>
+  </div>
+</main>
+
+<footer>
+  A3B Cloud LLC · <a href="/">Volver a la portada</a>
+</footer>
+
+<script>
+/* Muestra el ID de session de Stripe (?session=cs_...) por si el cliente
+   tiene que referenciarlo en un email de soporte. Puramente informativo. */
+(function(){
+  var p=new URLSearchParams(location.search);
+  var s=p.get('session');
+  if(s){document.getElementById('sessionRef').textContent='Ref: '+s;}
+})();
+</script>
+</body>
+</html>

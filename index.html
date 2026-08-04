@@ -637,7 +637,7 @@ try{
           <li>Soporte por email L–V</li>
           <li class="plus">Restauración certificada: <b>+$12</b>/servidor <small>opcional</small></li>
         </ul>
-        <a class="btn btn-ghost" href="mailto:support@a3bhub.cloud?subject=Prueba%20Panel%20-%20A3B%20Cloud">Prueba 14 días</a>
+        <button type="button" class="btn btn-ghost" data-signup="panel">Prueba 14 días</button>
         <p class="pnote">del 2º al 10º: +$2.49 · del 11º: +$1.99</p>
       </div>
 
@@ -660,7 +660,7 @@ try{
           <li>Botón de apagado por servidor</li>
           <li class="plus">Restauración certificada: <b>+$12</b>/servidor <small>opcional</small></li>
         </ul>
-        <a class="btn btn-primary" href="mailto:support@a3bhub.cloud?subject=Prueba%20Autopilot%20-%20A3B%20Cloud">Prueba 14 días</a>
+        <button type="button" class="btn btn-primary" data-signup="autopilot">Prueba 14 días</button>
         <p class="pnote">combinable por servidor: solo los que elijas</p>
       </div>
 
@@ -790,7 +790,7 @@ try{
     <h2 class="reveal d1">Tu servidor merece a alguien mirando</h2>
     <p class="lead reveal d2">Empieza con Panel en minutos, enciende Autopilot cuando quieras dormir tranquilo, y pásate a Gestión cuando tu servidor facture lo suficiente para merecer humanos. Todo desde $5.99, todo sin rehenes.</p>
     <div class="hero-cta reveal d3">
-      <a class="btn btn-primary btn-big" href="mailto:support@a3bhub.cloud?subject=Prueba%2014%20d%C3%ADas%20-%20A3B%20Cloud">Empieza tu prueba de 14 días</a>
+      <button type="button" class="btn btn-primary btn-big" data-signup="panel">Empieza tu prueba de 14 días</button>
       <a class="btn btn-ghost btn-big" href="mailto:support@a3bhub.cloud?subject=Gesti%C3%B3n%20-%20A3B%20Cloud">Hablar con un humano</a>
     </div>
   </div>
@@ -931,6 +931,116 @@ try{
   });
   update();
 })();
+
+/* ══════════════════════════════════════════════════════════════
+   SELF-SERVE SIGNUP (Opcion C)
+   Los botones [data-signup="panel|autopilot"] abren el modal, capturan
+   email + tier + servidores + billing del contexto (calculadora + toggle)
+   y llaman a app.a3bhub.cloud/api/checkout/session. La respuesta trae
+   la URL de Stripe Checkout hosted; redirect y a pagar.
+   ══════════════════════════════════════════════════════════════ */
+(function(){
+  var api='https://app.a3bhub.cloud/api/checkout/session';
+  var overlay=document.getElementById('signup');
+  if(!overlay)return;
+  var form=overlay.querySelector('form');
+  var emailInput=overlay.querySelector('#signupEmail');
+  var tierLabel=overlay.querySelector('[data-signup-tier]');
+  var summary=overlay.querySelector('[data-signup-summary]');
+  var submit=overlay.querySelector('[data-signup-submit]');
+  var errorBox=overlay.querySelector('[data-signup-error]');
+  var currentTier='panel';
+
+  function readContext(){
+    var srv=parseInt(document.getElementById('srvRange')?.value||'1',10);
+    var billBtn=document.querySelector('[data-billing-btn].on');
+    var bill=billBtn?billBtn.getAttribute('data-billing-btn'):'monthly';
+    return {servers:srv,billing:bill};
+  }
+
+  function open(tier){
+    currentTier=tier;
+    var ctx=readContext();
+    tierLabel.textContent=(tier==='panel'?'Panel':'Autopilot');
+    summary.textContent=ctx.servers+' servidor'+(ctx.servers===1?'':'es')+' · '+(ctx.billing==='annual'?'anual':'mensual');
+    errorBox.hidden=true;errorBox.textContent='';
+    overlay.hidden=false;
+    setTimeout(function(){emailInput.focus();},50);
+  }
+  function close(){overlay.hidden=true;submit.disabled=false;submit.textContent='Ir a pagar';}
+
+  document.querySelectorAll('[data-signup]').forEach(function(b){
+    b.addEventListener('click',function(){open(b.getAttribute('data-signup'));});
+  });
+  overlay.addEventListener('click',function(e){if(e.target===overlay)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)close();});
+  overlay.querySelector('[data-signup-close]').addEventListener('click',close);
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=emailInput.value.trim();
+    if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      errorBox.textContent='Introduce un correo valido.';errorBox.hidden=false;return;
+    }
+    var ctx=readContext();
+    submit.disabled=true;submit.textContent='Creando sesion...';
+    errorBox.hidden=true;
+    fetch(api,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email:email,tier:currentTier,servers:ctx.servers,billing:ctx.billing})
+    }).then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+    .then(function(res){
+      if(res.ok&&res.d.url){location.href=res.d.url;return;}
+      errorBox.textContent=res.d.error||'No se pudo iniciar el pago. Prueba de nuevo o escribe a support@a3bhub.cloud.';
+      errorBox.hidden=false;
+      submit.disabled=false;submit.textContent='Ir a pagar';
+    }).catch(function(){
+      errorBox.textContent='Sin conexion con el servidor. Prueba de nuevo o escribe a support@a3bhub.cloud.';
+      errorBox.hidden=false;
+      submit.disabled=false;submit.textContent='Ir a pagar';
+    });
+  });
+})();
 </script>
+
+<!-- ═══ MODAL DE SIGNUP (opcion C) ═══ -->
+<div id="signup" class="signup-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+  <div class="signup-box">
+    <button type="button" class="signup-close" data-signup-close aria-label="Cerrar">×</button>
+    <span class="kicker">Prueba 14 días</span>
+    <h3 id="signupTitle" class="signup-title">Empieza con <span data-signup-tier>Panel</span></h3>
+    <p class="signup-summary" data-signup-summary>1 servidor · mensual</p>
+    <p class="signup-note">Solo tu correo. En el siguiente paso Stripe validará tu tarjeta — no se cobra hasta el día 15. Puedes cancelar antes desde el panel.</p>
+    <form novalidate>
+      <label for="signupEmail" class="signup-label">Tu correo</label>
+      <input id="signupEmail" type="email" required autocomplete="email" placeholder="tu@correo.com" class="signup-input">
+      <p class="signup-error" data-signup-error hidden></p>
+      <button type="submit" class="btn btn-primary btn-big signup-submit" data-signup-submit>Ir a pagar</button>
+    </form>
+    <p class="signup-legal">Al continuar aceptas los <a href="terminos.html">términos</a> y la <a href="privacidad.html">privacidad</a>.</p>
+  </div>
+</div>
+
+<style>
+.signup-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px}
+.signup-overlay[hidden]{display:none}
+.signup-box{background:var(--surface,#111419);border:1px solid var(--border-2,rgba(255,255,255,.14));border-radius:14px;max-width:460px;width:100%;padding:40px 32px 32px;position:relative;box-shadow:0 24px 64px -12px rgba(0,0,0,.6)}
+.signup-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:transparent;border:1px solid var(--border,rgba(255,255,255,.08));color:var(--muted,#8b919c);font-size:20px;line-height:1;cursor:pointer;transition:all .15s}
+.signup-close:hover{color:var(--text,#e9eaee);border-color:var(--border-2,rgba(255,255,255,.14))}
+.signup-title{font-family:var(--disp,'Bricolage Grotesque',sans-serif);font-weight:800;font-size:clamp(24px,3vw,30px);letter-spacing:-.02em;margin:12px 0 6px;line-height:1.1}
+.signup-title span{color:var(--signal,#2ce58c)}
+.signup-summary{color:var(--muted,#8b919c);font-family:var(--mono,'JetBrains Mono',monospace);font-size:13px;margin-bottom:16px}
+.signup-note{color:var(--muted,#8b919c);font-size:14px;line-height:1.55;margin-bottom:22px}
+.signup-label{display:block;font-family:var(--mono,'JetBrains Mono',monospace);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint,#767d8a);margin-bottom:8px}
+.signup-input{width:100%;background:var(--bg,#08090b);border:1px solid var(--border-2,rgba(255,255,255,.14));color:var(--text,#e9eaee);font-family:inherit;font-size:16px;padding:14px 16px;border-radius:10px;outline:none;transition:border-color .15s}
+.signup-input:focus{border-color:var(--signal,#2ce58c)}
+.signup-error{color:var(--danger,#ff5d5d);font-size:14px;margin:10px 0 0;padding:10px 12px;background:rgba(255,93,93,.08);border:1px solid rgba(255,93,93,.2);border-radius:8px}
+.signup-submit{width:100%;margin-top:16px;justify-content:center}
+.signup-submit:disabled{opacity:.6;cursor:progress}
+.signup-legal{color:var(--faint,#767d8a);font-size:12px;text-align:center;margin-top:18px;line-height:1.5}
+.signup-legal a{color:var(--muted,#8b919c);border-bottom:1px solid rgba(139,154,147,.35)}
+.signup-legal a:hover{color:var(--signal,#2ce58c);border-bottom-color:var(--signal,#2ce58c)}
+</style>
 </body>
 </html>
