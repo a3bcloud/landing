@@ -931,77 +931,6 @@ try{
   });
   update();
 })();
-
-/* ══════════════════════════════════════════════════════════════
-   SELF-SERVE SIGNUP (Opcion C)
-   Los botones [data-signup="panel|autopilot"] abren el modal, capturan
-   email + tier + servidores + billing del contexto (calculadora + toggle)
-   y llaman a app.a3bhub.cloud/api/checkout/session. La respuesta trae
-   la URL de Stripe Checkout hosted; redirect y a pagar.
-   ══════════════════════════════════════════════════════════════ */
-(function(){
-  var api='https://app.a3bhub.cloud/api/checkout/session';
-  var overlay=document.getElementById('signup');
-  if(!overlay)return;
-  var form=overlay.querySelector('form');
-  var emailInput=overlay.querySelector('#signupEmail');
-  var tierLabel=overlay.querySelector('[data-signup-tier]');
-  var summary=overlay.querySelector('[data-signup-summary]');
-  var submit=overlay.querySelector('[data-signup-submit]');
-  var errorBox=overlay.querySelector('[data-signup-error]');
-  var currentTier='panel';
-
-  function readContext(){
-    var srv=parseInt(document.getElementById('srvRange')?.value||'1',10);
-    var billBtn=document.querySelector('[data-billing-btn].on');
-    var bill=billBtn?billBtn.getAttribute('data-billing-btn'):'monthly';
-    return {servers:srv,billing:bill};
-  }
-
-  function open(tier){
-    currentTier=tier;
-    var ctx=readContext();
-    tierLabel.textContent=(tier==='panel'?'Panel':'Autopilot');
-    summary.textContent=ctx.servers+' servidor'+(ctx.servers===1?'':'es')+' · '+(ctx.billing==='annual'?'anual':'mensual');
-    errorBox.hidden=true;errorBox.textContent='';
-    overlay.hidden=false;
-    setTimeout(function(){emailInput.focus();},50);
-  }
-  function close(){overlay.hidden=true;submit.disabled=false;submit.textContent='Ir a pagar';}
-
-  document.querySelectorAll('[data-signup]').forEach(function(b){
-    b.addEventListener('click',function(){open(b.getAttribute('data-signup'));});
-  });
-  overlay.addEventListener('click',function(e){if(e.target===overlay)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)close();});
-  overlay.querySelector('[data-signup-close]').addEventListener('click',close);
-
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var email=emailInput.value.trim();
-    if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-      errorBox.textContent='Introduce un correo valido.';errorBox.hidden=false;return;
-    }
-    var ctx=readContext();
-    submit.disabled=true;submit.textContent='Creando sesion...';
-    errorBox.hidden=true;
-    fetch(api,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({email:email,tier:currentTier,servers:ctx.servers,billing:ctx.billing})
-    }).then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
-    .then(function(res){
-      if(res.ok&&res.d.url){location.href=res.d.url;return;}
-      errorBox.textContent=res.d.error||'No se pudo iniciar el pago. Prueba de nuevo o escribe a support@a3bhub.cloud.';
-      errorBox.hidden=false;
-      submit.disabled=false;submit.textContent='Ir a pagar';
-    }).catch(function(){
-      errorBox.textContent='Sin conexion con el servidor. Prueba de nuevo o escribe a support@a3bhub.cloud.';
-      errorBox.hidden=false;
-      submit.disabled=false;submit.textContent='Ir a pagar';
-    });
-  });
-})();
 </script>
 
 <!-- ═══ MODAL DE SIGNUP (opcion C) ═══ -->
@@ -1042,5 +971,73 @@ try{
 .signup-legal a{color:var(--muted,#8b919c);border-bottom:1px solid rgba(139,154,147,.35)}
 .signup-legal a:hover{color:var(--signal,#2ce58c);border-bottom-color:var(--signal,#2ce58c)}
 </style>
+
+<script>
+/* Signup Opcion C. Este bloque va DESPUES del #signup para que
+   getElementById('signup') no retorne null y aborte el IIFE. */
+(function(){
+  var api='https://app.a3bhub.cloud/api/checkout/session';
+  var overlay=document.getElementById('signup');
+  if(!overlay)return;
+  var form=overlay.querySelector('form');
+  var emailInput=overlay.querySelector('#signupEmail');
+  var tierLabel=overlay.querySelector('[data-signup-tier]');
+  var summary=overlay.querySelector('[data-signup-summary]');
+  var submit=overlay.querySelector('[data-signup-submit]');
+  var errorBox=overlay.querySelector('[data-signup-error]');
+  var currentTier='panel';
+
+  function readContext(){
+    var srv=parseInt(document.getElementById('srvRange')?.value||'1',10);
+    var billBtn=document.querySelector('[data-billing-btn].on');
+    var bill=billBtn?billBtn.getAttribute('data-billing-btn'):'monthly';
+    return {servers:srv,billing:bill};
+  }
+
+  function openModal(tier){
+    currentTier=tier;
+    var ctx=readContext();
+    tierLabel.textContent=(tier==='panel'?'Panel':'Autopilot');
+    summary.textContent=ctx.servers+' servidor'+(ctx.servers===1?'':'es')+' · '+(ctx.billing==='annual'?'anual':'mensual');
+    errorBox.hidden=true;errorBox.textContent='';
+    overlay.hidden=false;
+    setTimeout(function(){emailInput.focus();},50);
+  }
+  function closeModal(){overlay.hidden=true;submit.disabled=false;submit.textContent='Ir a pagar';}
+
+  document.querySelectorAll('[data-signup]').forEach(function(b){
+    b.addEventListener('click',function(){openModal(b.getAttribute('data-signup'));});
+  });
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)closeModal();});
+  overlay.querySelector('[data-signup-close]').addEventListener('click',closeModal);
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=emailInput.value.trim();
+    if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      errorBox.textContent='Introduce un correo valido.';errorBox.hidden=false;return;
+    }
+    var ctx=readContext();
+    submit.disabled=true;submit.textContent='Creando sesion...';
+    errorBox.hidden=true;
+    fetch(api,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email:email,tier:currentTier,servers:ctx.servers,billing:ctx.billing})
+    }).then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+    .then(function(res){
+      if(res.ok&&res.d.url){location.href=res.d.url;return;}
+      errorBox.textContent=res.d.error||'No se pudo iniciar el pago. Prueba de nuevo o escribe a support@a3bhub.cloud.';
+      errorBox.hidden=false;
+      submit.disabled=false;submit.textContent='Ir a pagar';
+    }).catch(function(){
+      errorBox.textContent='Sin conexion con el servidor. Prueba de nuevo o escribe a support@a3bhub.cloud.';
+      errorBox.hidden=false;
+      submit.disabled=false;submit.textContent='Ir a pagar';
+    });
+  });
+})();
+</script>
 </body>
 </html>
