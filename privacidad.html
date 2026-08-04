@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de Privacidad — A3B Cloud</title>
+<meta name="description" content="Qué datos recopila A3B Cloud, qué no recopila por arquitectura, cómo procesa Autopilot con IA, subencargados, retención y tus derechos.">
+<meta name="theme-color" content="#08090b">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090b;--bg-2:#0d0f13;--surface:#111419;--surface-2:#171b22;--text:#e9eaee;--muted:#8b919c;--faint:#767d8a;--signal:#2ce58c;--signal-dim:#1d9c61;--danger:#ff5d5d;--amber:#ffb24d;--border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.14);--mono:"JetBrains Mono",ui-monospace,monospace;--disp:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--signal);color:#04130b}
+a{color:var(--signal);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,9,11,.6);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1160px;margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;font-size:17px;color:var(--text);letter-spacing:-.01em}
+.brand:hover{text-decoration:none}
+.brand img{width:30px;height:30px;display:block}
+.brand span b{color:var(--signal)}
+.nav-back{font-size:14px;color:var(--muted)}
+.nav-back:hover{color:var(--text);text-decoration:none}
+.doc-hero{padding:72px 0 40px;border-bottom:1px solid var(--border);background:radial-gradient(600px 300px at 80% 0%,rgba(44,229,140,.07),transparent 70%)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)}
+.doc-hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,46px);letter-spacing:-.03em;line-height:1.06;margin-top:14px}
+.doc-meta{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:14px}
+main{padding:48px 0 90px}
+main h2{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.015em;margin:44px 0 14px;padding-top:22px;border-top:1px solid var(--border)}
+main h2:first-child{border-top:none;margin-top:0;padding-top:0}
+main h1{display:none}
+main p{color:var(--muted);margin:14px 0;max-width:74ch}
+main p strong,main li strong{color:var(--text);font-weight:600}
+main ul,main ol{margin:14px 0 14px 22px;color:var(--muted);max-width:72ch}
+main li{margin:8px 0}
+main hr{border:0;border-top:1px solid var(--border);margin:36px 0}
+main em{color:var(--muted)}
+.table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:14px;margin:22px 0;background:var(--surface)}
+main table{width:100%;border-collapse:collapse;min-width:640px;font-size:13.5px}
+main th,main td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;color:var(--muted)}
+main th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);background:rgba(255,255,255,.02);white-space:nowrap}
+main td:first-child{color:var(--text)}
+main tr:last-child td{border-bottom:none}
+main code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1px 6px;color:var(--text)}
+.tldr{border:1px solid rgba(44,229,140,.25);background:linear-gradient(180deg,rgba(44,229,140,.07),rgba(44,229,140,.015));border-radius:14px;padding:18px 22px;margin:10px 0 6px}
+.tldr p{margin:0;color:var(--muted)}
+footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--bg-2)}
+.foot{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-links a{color:var(--muted);font-size:13.5px}
+.foot-links a:hover{color:var(--text);text-decoration:none}
+.foot-sub{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+@media(max-width:640px){.doc-hero{padding:52px 0 32px} main{padding:36px 0 70px}}
+</style>
+</head>
+<body>
+<!-- ═══════════════════════════════════════════════════════════════
+NOTAS INTERNAS — ELIMINAR ESTE BLOQUE ANTES DE PUBLICAR
+
+Corchetes: [DIRECCIÓN REGISTRADA] · [FECHA DE PUBLICACIÓN]
+
+Decisiones que tomé y debes confirmar:
+  · Retención: logs técnicos y Registro 12 meses; cuenta 30 días tras baja;
+    facturación 7 años (obligación fiscal EE. UU.)
+  · Subencargados listados: Stripe, Cloudflare, Anthropic, proveedor de
+    email transaccional [CONFIRMAR CUÁL], hosting del panel [CONFIRMAR CUÁL]
+  · Mantener una página /subencargados con la lista viva y avisar cambios
+  · Analítica web: asumo analítica propia sin cookies (p. ej. Plausible
+    self-hosted); si usas otra cosa, ajustar sección 12
+
+Pendiente de revisión legal: alcance GDPR/CCPA según clientes reales,
+DPA formal (la cláusula 16 de los términos lo ofrece), y SCCs si
+llegan clientes de la UE.
+═══════════════════════════════════════════════════════════════ -->
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="assets/logo-icon.svg" alt=""><span>A3B<b>&nbsp;Cloud</b></span></a>
+    <a class="nav-back" href="index.html">← Volver al sitio</a>
+  </div>
+</header>
+<section class="doc-hero">
+  <div class="wrap">
+    <span class="kicker">Documento legal</span>
+    <h1>Política de Privacidad</h1>
+    <p class="doc-meta">A3B Cloud LLC · Versión 2.0 · Vigente desde [FECHA DE PUBLICACIÓN]</p>
+  </div>
+</section>
+<main>
+  <div class="wrap">
+<h1>Política de Privacidad</h1>
+<p><strong>A3B Cloud LLC</strong> · Versión 2.0 · [FECHA DE PUBLICACIÓN]</p>
+<div class="tldr"><p>La versión corta, porque la honestidad también aplica aquí: <strong>recopilamos lo mínimo para operar el servicio, no vendemos datos, no mostramos publicidad, y tus aplicaciones, tus datos y tus copias viven en tu infraestructura — no en la nuestra.</strong> El detalle, abajo.</p></div>
+<h2>1. Responsable del tratamiento</h2>
+<p><strong>A3B Cloud LLC</strong>, sociedad de Delaware, EE. UU., con domicilio en [DIRECCIÓN REGISTRADA]. Contacto de privacidad: <strong>privacy@a3bhub.cloud</strong> (también atendemos por support@a3bhub.cloud).</p>
+<h2>2. A quién aplica esta política</h2>
+<p>A quienes visitan nuestros sitios (a3bhub.cloud y subdominios), crean una cuenta o usan nuestros servicios. Si tus aplicaciones tratan datos de <strong>tus</strong> usuarios, respecto de esos datos el responsable eres tú y nosotros actuamos como encargado (sección 10).</p>
+<h2>3. Datos que recopilamos</h2>
+<p><strong>Datos de cuenta</strong>: nombre o razón social, correo electrónico, contraseña (almacenada con hash), país, y los canales de aviso que configures (email, Telegram, Discord).</p>
+<p><strong>Datos de facturación</strong>: los gestiona <strong>Stripe</strong>; nosotros recibimos y conservamos identificadores de cliente, importes, estado de pagos y datos fiscales de la factura. <strong>Nunca vemos ni almacenamos tu número de tarjeta completo.</strong></p>
+<p><strong>Datos técnicos de tus servidores</strong>: metadatos necesarios para operar — dirección IP y nombre del servidor, estado de contenedores y despliegues, métricas (CPU, RAM, disco), logs técnicos de las aplicaciones cuando el servicio los procesa para diagnóstico, resultados de las comprobaciones de vigilancia, y el Registro de incidentes y acciones (qué ocurrió, qué se hizo, cuándo y con qué resultado).</p>
+<p><strong>Credenciales operativas</strong>: claves de acceso a tus servidores, credenciales de tu bucket y claves de cifrado de copias. Se almacenan <strong>cifradas</strong>, con acceso restringido, y se usan exclusivamente para ejecutar el servicio que contrataste.</p>
+<p><strong>Comunicaciones</strong>: los correos y mensajes de soporte que intercambiemos.</p>
+<p><strong>Datos de navegación web</strong>: analítica agregada y sin cookies de seguimiento (sección 12).</p>
+<h2>4. Lo que NO recopilamos — por arquitectura</h2>
+<p>El diseño del servicio evita que tus datos pasen por nosotros: <strong>no alojamos el contenido de tus aplicaciones, no almacenamos tus bases de datos y no almacenamos tus copias de seguridad</strong> — viven en tu servidor y en tu bucket, contratados por ti con terceros. No accedemos al contenido de tus aplicaciones salvo que nos lo pidas para resolver una incidencia o al ejecutar una restauración contratada, y no leemos tus copias: las claves solo se usan para programar respaldos y, si lo contratas, verificar restauraciones.</p>
+<h2>5. Autopilot e inteligencia artificial</h2>
+<p>Cuando activas Autopilot, los <strong>datos técnicos</strong> del incidente — logs, métricas, estado de contenedores — se procesan con proveedores de modelos de IA (actualmente <strong>Anthropic</strong>, vía API) para diagnosticar y decidir dentro de la lista de acciones permitidas. Aplicamos filtrado para enviar solo información técnica necesaria; no enviamos deliberadamente contenido de tus aplicaciones ni datos personales de tus usuarios. Conforme a los términos comerciales de la API de nuestro proveedor, <strong>tus datos no se usan para entrenar sus modelos</strong>. Cada acción del agente queda en tu Registro, auditable por ti.</p>
+<h2>6. Para qué usamos los datos y con qué base</h2>
+<ul>
+<li><strong>Prestar el servicio</strong> (ejecución de contrato): operar el Panel, respaldos, vigilancia, avisos, Autopilot, soporte y facturación.</li>
+<li><strong>Seguridad y prevención de abuso</strong> (interés legítimo): proteger el servicio, tu cuenta y a terceros.</li>
+<li><strong>Mejora del servicio</strong> (interés legítimo): métricas agregadas y diagnósticos; no perfilamos personas ni vendemos audiencias.</li>
+<li><strong>Obligaciones legales</strong>: facturación, contabilidad y requerimientos válidos de autoridades.</li>
+<li><strong>Comunicaciones</strong>: transaccionales y de servicio siempre; comerciales solo nuestras y con baja en un clic.</li>
+</ul>
+<p>No tomamos decisiones automatizadas con efectos jurídicos sobre personas; las acciones de Autopilot operan sobre infraestructura, dentro de la lista que tú autorizas, y con posibilidad de desactivación inmediata.</p>
+<h2>7. Con quién compartimos datos</h2>
+<p>Con <strong>proveedores que nos ayudan a operar</strong>, bajo contrato y solo lo necesario: Stripe (pagos), Cloudflare (red, seguridad y entrega del servicio), Anthropic (procesamiento de IA para Autopilot), nuestro proveedor de correo transaccional y el proveedor de infraestructura donde se aloja el Panel. Mantenemos la lista actualizada en <strong>a3bhub.cloud/subencargados</strong> y avisamos con 15 días antes de añadir uno nuevo que trate datos de clientes.</p>
+<p>Además: autoridades cuando una ley válida lo exija (te avisaremos salvo prohibición legal), y un eventual adquirente en caso de reorganización o venta del negocio, bajo esta misma política.</p>
+<p><strong>No vendemos datos personales. No compartimos datos con anunciantes. No hay publicidad en nuestros servicios.</strong></p>
+<h2>8. Transferencias internacionales</h2>
+<p>Operamos desde EE. UU. y usamos proveedores que pueden tratar datos en varios países. Cuando transferimos datos de regiones con requisitos específicos (como la UE/EEE o Reino Unido), lo hacemos con salvaguardas reconocidas, como cláusulas contractuales tipo, y nuestro DPA está disponible (sección 10).</p>
+<h2>9. Cuánto tiempo conservamos los datos</h2>
+<ul>
+<li><strong>Cuenta y configuración</strong>: mientras la cuenta esté activa; a los <strong>30 días</strong> de la baja se eliminan, salvo lo que la ley obligue a conservar.</li>
+<li><strong>Credenciales operativas</strong> (servidores, bucket, claves de cifrado): se eliminan al desconectar el servidor o cerrar la cuenta.</li>
+<li><strong>Registro, logs técnicos y métricas</strong>: <strong>12 meses</strong>, para diagnóstico, seguridad y tu propia auditoría.</li>
+<li><strong>Facturación</strong>: <strong>7 años</strong>, por obligaciones fiscales y contables.</li>
+<li><strong>Soporte</strong>: 24 meses desde el último contacto.</li>
+</ul>
+<h2>10. Tu papel con tus usuarios (encargo de tratamiento)</h2>
+<p>Si tus aplicaciones tratan datos personales de terceros, tú eres el responsable de ese tratamiento. Nuestro acceso a esos datos es incidental y limitado (sección 4); cuando exista — por ejemplo, al verificar una restauración —, actuamos como <strong>encargado del tratamiento</strong> siguiendo tus instrucciones. Ofrecemos un <strong>acuerdo de encargo (DPA)</strong> con las obligaciones estándar (confidencialidad, seguridad, subencargados, asistencia y supresión): solicítalo a privacy@a3bhub.cloud.</p>
+<h2>11. Seguridad</h2>
+<p>Aplicamos medidas técnicas y organizativas proporcionales: cifrado en tránsito (TLS) y en reposo para credenciales y claves, control de acceso con privilegio mínimo, verificación en dos pasos disponible en tu cuenta, registro de acciones administrativas, y revisión continua de avisos de seguridad de nuestros componentes. Ningún sistema es infalible: si sufrimos una brecha que afecte tus datos personales, <strong>te lo notificaremos sin demora indebida</strong>, con lo que sepamos y lo que estemos haciendo — el mismo estándar de honestidad que aplicamos a los certificados de restauración.</p>
+<h2>12. Cookies y analítica</h2>
+<p>Usamos únicamente cookies <strong>esenciales</strong> (sesión y seguridad del Panel). La analítica de nuestros sitios es agregada y sin cookies de seguimiento ni identificadores publicitarios. Por eso no verás un banner de cookies de tres pantallas: no hay nada que consentir.</p>
+<h2>13. Tus derechos</h2>
+<p>Puedes ejercer, según la ley que te aplique (incluidos GDPR, CCPA o la normativa de tu país): <strong>acceso, rectificación, supresión, portabilidad, limitación y oposición</strong>, así como retirar consentimientos. Escríbenos a privacy@a3bhub.cloud; respondemos en un máximo de 30 días. Si resides en la UE/EEE también puedes reclamar ante tu autoridad de control; si resides en California, no «vendemos» ni «compartimos» información personal en los términos de la CCPA.</p>
+<p>La mayoría de los datos puedes verlos y gestionarlos directamente en tu Panel, incluida la exportación de tu configuración y tu Registro.</p>
+<h2>14. Menores</h2>
+<p>El servicio está dirigido a mayores de 18 años. No recopilamos deliberadamente datos de menores; si detectamos una cuenta de un menor, la eliminaremos.</p>
+<h2>15. Cambios en esta política</h2>
+<p>Los cambios materiales se avisan con <strong>30 días</strong> por correo y en el Panel. El historial de versiones queda publicado. Si un cambio no te encaja, puedes cerrar tu cuenta antes de su entrada en vigor.</p>
+<h2>16. Contacto</h2>
+<p><strong>privacy@a3bhub.cloud</strong> · A3B Cloud LLC, [DIRECCIÓN REGISTRADA], Delaware, EE. UU.</p>
+  </div>
+</main>
+<footer>
+  <div class="foot">
+    <span class="foot-sub">A3B Cloud LLC · Delaware, EE. UU.</span>
+    <nav class="foot-links">
+      <a href="terminos.html">Términos</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="responsabilidad.html">Responsabilidad</a>
+      <a href="index.html">Inicio</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

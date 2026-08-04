@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Términos del Servicio — A3B Cloud</title>
+<meta name="description" content="Términos del servicio de A3B Cloud: planes Panel, Autopilot y Gestión, copias hacia tu bucket, acciones automatizadas y condiciones completas.">
+<meta name="theme-color" content="#08090b">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090b;--bg-2:#0d0f13;--surface:#111419;--surface-2:#171b22;--text:#e9eaee;--muted:#8b919c;--faint:#767d8a;--signal:#2ce58c;--signal-dim:#1d9c61;--danger:#ff5d5d;--amber:#ffb24d;--border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.14);--mono:"JetBrains Mono",ui-monospace,monospace;--disp:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--signal);color:#04130b}
+a{color:var(--signal);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,9,11,.6);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1160px;margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;font-size:17px;color:var(--text);letter-spacing:-.01em}
+.brand:hover{text-decoration:none}
+.brand img{width:30px;height:30px;display:block}
+.brand span b{color:var(--signal)}
+.nav-back{font-size:14px;color:var(--muted)}
+.nav-back:hover{color:var(--text);text-decoration:none}
+.doc-hero{padding:72px 0 40px;border-bottom:1px solid var(--border);background:radial-gradient(600px 300px at 80% 0%,rgba(44,229,140,.07),transparent 70%)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)}
+.doc-hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,46px);letter-spacing:-.03em;line-height:1.06;margin-top:14px}
+.doc-meta{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:14px}
+main{padding:48px 0 90px}
+main h2{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.015em;margin:44px 0 14px;padding-top:22px;border-top:1px solid var(--border)}
+main h2:first-child{border-top:none;margin-top:0;padding-top:0}
+main h1{display:none}
+main p{color:var(--muted);margin:14px 0;max-width:74ch}
+main p strong,main li strong{color:var(--text);font-weight:600}
+main ul,main ol{margin:14px 0 14px 22px;color:var(--muted);max-width:72ch}
+main li{margin:8px 0}
+main hr{border:0;border-top:1px solid var(--border);margin:36px 0}
+main em{color:var(--muted)}
+.table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:14px;margin:22px 0;background:var(--surface)}
+main table{width:100%;border-collapse:collapse;min-width:640px;font-size:13.5px}
+main th,main td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;color:var(--muted)}
+main th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);background:rgba(255,255,255,.02);white-space:nowrap}
+main td:first-child{color:var(--text)}
+main tr:last-child td{border-bottom:none}
+main code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1px 6px;color:var(--text)}
+.tldr{border:1px solid rgba(44,229,140,.25);background:linear-gradient(180deg,rgba(44,229,140,.07),rgba(44,229,140,.015));border-radius:14px;padding:18px 22px;margin:10px 0 6px}
+.tldr p{margin:0;color:var(--muted)}
+footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--bg-2)}
+.foot{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-links a{color:var(--muted);font-size:13.5px}
+.foot-links a:hover{color:var(--text);text-decoration:none}
+.foot-sub{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+@media(max-width:640px){.doc-hero{padding:52px 0 32px} main{padding:36px 0 70px}}
+</style>
+</head>
+<body>
+<!-- ═══════════════════════════════════════════════════════════════
+NOTAS INTERNAS — ELIMINAR ESTE BLOQUE ANTES DE PUBLICAR
+
+Corchetes pendientes: [DIRECCIÓN REGISTRADA] · [FECHA DE PUBLICACIÓN]
+
+Decisiones que tomé y debes confirmar:
+  · Prueba 14 días: requiere tarjeta; primer cobro el día 15 (cláusula 6)
+  · Garantía 30 días solo en Gestión, primer mes, una vez por cliente (cláusula 6)
+  · Contracargos: suspensión del servicio mientras se resuelve (cláusula 12)
+  · Retención del registro de incidentes: 12 meses (alineado con privacidad)
+  · Resolución de disputas: tribunales de Delaware; un abogado podría
+    recomendar arbitraje + renuncia a acciones colectivas — EVALUAR (cláusula 21)
+
+ALINEAR EN LA WEB: el FAQ dice "no podemos leer tus copias"; la redacción
+precisa es la de la cláusula 8: las credenciales del bucket y claves de
+cifrado se almacenan cifradas en el panel para ejecutar los respaldos.
+Sugerencia de texto web: "tus copias viven en tu bucket; las claves se
+guardan cifradas en el panel y solo se usan para ejecutar tus respaldos".
+
+Pendiente de revisión legal formal (Delaware): cláusulas 7, 17, 18, 21,
+ley de consumo por país de residencia del cliente, y versión en inglés.
+═══════════════════════════════════════════════════════════════ -->
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="assets/logo-icon.svg" alt=""><span>A3B<b>&nbsp;Cloud</b></span></a>
+    <a class="nav-back" href="index.html">← Volver al sitio</a>
+  </div>
+</header>
+<section class="doc-hero">
+  <div class="wrap">
+    <span class="kicker">Documento legal</span>
+    <h1>Términos del Servicio</h1>
+    <p class="doc-meta">A3B Cloud LLC · Versión 2.0 · Vigentes desde [FECHA DE PUBLICACIÓN]</p>
+  </div>
+</section>
+<main>
+  <div class="wrap">
+<h1>Términos del Servicio</h1>
+<p><strong>A3B Cloud LLC</strong> · Versión 2.0 · [FECHA DE PUBLICACIÓN]</p>
+<h2>1. Quiénes somos y qué aceptas</h2>
+<p>Estos términos regulan los servicios de plataforma de despliegue, vigilancia y gestión de servidores que presta <strong>A3B Cloud LLC</strong> («A3B Cloud», «nosotros»), sociedad constituida en el Estado de Delaware, Estados Unidos, a la persona o empresa que los contrata («tú», «el cliente»).</p>
+<p>Crear una cuenta, iniciar una prueba, pagar o usar el servicio implica aceptar estos términos y la <a href="https://a3bhub.cloud/privacidad.html">Política de Privacidad</a>, que forma parte de ellos. Si contratas en nombre de una empresa, declaras tener autoridad para obligarla.</p>
+<p>Debes ser mayor de 18 años para usar el servicio.</p>
+<h2>2. Definiciones</h2>
+<ul>
+<li><strong>Panel</strong>: la aplicación web alojada por A3B Cloud en la que gestionas tus servidores y despliegues.</li>
+<li><strong>Servidor del Cliente</strong>: la máquina que tú contratas con tu proveedor de infraestructura y conectas al Panel. Es tuya y siempre lo será.</li>
+<li><strong>Bucket del Cliente</strong>: el almacenamiento de objetos (R2, S3, B2 u otro compatible) que tú contratas y al que se envían tus copias de seguridad.</li>
+<li><strong>Autopilot</strong>: el agente automatizado que, en los servidores donde lo actives, diagnostica incidentes y ejecuta Acciones Permitidas.</li>
+<li><strong>Acciones Permitidas</strong>: la lista cerrada de acciones operativas que Autopilot puede ejecutar, publicada en el Panel.</li>
+<li><strong>Registro</strong>: el historial de comprobaciones, incidentes y acciones, visible en tu Panel.</li>
+<li><strong>Planes</strong>: Panel, Autopilot y Gestión, según se describen en la cláusula 4.</li>
+</ul>
+<h2>3. Descripción del servicio y arquitectura</h2>
+<p>El servicio consiste en: (a) acceso al Panel para desplegar y administrar aplicaciones en tus servidores; (b) programación de copias de seguridad de tus bases de datos hacia tu Bucket; (c) vigilancia externa de tus servidores y aplicaciones con avisos; y, según el plan, (d) remediación automatizada mediante Autopilot y/o (e) servicios de gestión humana.</p>
+<p><strong>La arquitectura es deliberada y conviene entenderla:</strong> el Panel es nuestro servicio alojado; <strong>tus aplicaciones, tus datos y tus copias residen en tu servidor y en tu bucket</strong>, contratados por ti con terceros. No alojamos tu contenido, no revendemos infraestructura y no somos tu proveedor de alojamiento. No respondemos de las caídas, precios o decisiones de tus proveedores.</p>
+<p>Consecuencia práctica: si dejas el servicio, tus contenedores siguen corriendo y tus copias siguen en tu bucket. Perderías el acceso al Panel; para ese caso te entregamos una guía de transición a un panel de software libre autoinstalado (cláusula 13).</p>
+<h2>4. Planes, complementos y combinación</h2>
+<ul>
+<li><strong>Panel</strong> («te avisamos»): acceso completo al Panel, despliegues ilimitados, copias diarias hacia tu Bucket, vigilancia horaria externa, avisos, página de estado, informes de disponibilidad y soporte por email de lunes a viernes. La administración del sistema operativo y del servidor es responsabilidad tuya.</li>
+<li><strong>Autopilot</strong> («lo resolvemos, autónomo»): todo lo del Panel más el agente de remediación automatizada 24/7 descrito en la cláusula 7, por cada servidor donde lo actives.</li>
+<li><strong>Gestión</strong> («nosotros, con manos»): todo lo de Autopilot más, por cada servidor contratado: configuración endurecida inicial, aplicación de parches de seguridad, restauración mensual de prueba con certificado escrito, migración inicial de hasta tres (3) aplicaciones, revisión trimestral de salud, simulacro anual de recuperación y línea directa de soporte de lunes a viernes.</li>
+<li><strong>Complemento de restauración certificada</strong>: disponible para servidores en Panel o Autopilot; ejecuta la restauración mensual de prueba con certificado descrita en la cláusula 8.</li>
+<li>Los planes se contratan <strong>por servidor</strong> y son combinables dentro de una misma cuenta.</li>
+</ul>
+<h2>5. Beneficios incluidos y su alcance</h2>
+<p>Los beneficios «de serie» (equipos ilimitados, página de estado, informes, avisos de dominio y TLS, alertas de recursos, comunidad, facturación desde A3B Cloud LLC) forman parte del servicio y pueden evolucionar. Los servicios acotados de Gestión tienen los límites indicados: la migración inicial cubre hasta 3 aplicaciones dentro de la puesta en marcha (adicionales, previa cotización); la revisión de salud es trimestral; el simulacro de recuperación es anual por servidor.</p>
+<h2>6. Prueba, garantía y alta</h2>
+<ul>
+<li><strong>Prueba de 14 días</strong> (Panel y Autopilot): requiere método de pago válido; el primer cobro se realiza al finalizar la prueba. Puedes cancelar durante la prueba desde el Panel sin cargo alguno.</li>
+<li><strong>Garantía de 30 días</strong> (Gestión): si en los primeros 30 días el servicio no te convence, te devolvemos la primera cuota íntegra, sin preguntas. Aplica una vez por cliente y no cubre el costo de tu infraestructura.</li>
+<li><strong>Puesta en marcha de Gestión</strong>: 49 $ por servidor, pago único, gratuita con contratación anual.</li>
+</ul>
+<h2>7. Autopilot: autorización de acciones automatizadas</h2>
+<p>Esta cláusula es la más importante del plan Autopilot; léela completa.</p>
+<p><strong>Autorización.</strong> Al activar Autopilot en un servidor, nos autorizas expresamente a que un agente automatizado ejecute en ese servidor, sin intervención humana previa y en cualquier momento, las Acciones Permitidas publicadas en tu Panel, cuando la vigilancia detecte un incidente.</p>
+<p><strong>Límites por diseño.</strong> El agente: (a) solo puede ejecutar Acciones Permitidas — la lista es cerrada y visible en tu Panel antes de activar el servicio; (b) no modifica tu código, no escribe en tus bases de datos, no lee el contenido de tus aplicaciones y no elimina datos; (c) verifica el resultado tras cada acción y, si el incidente persiste o excede la lista, se detiene y escala a soporte humano; (d) está sujeto a un límite de acciones por hora; (e) registra cada diagnóstico y acción, con hora y resultado, en tu Registro.</p>
+<p><strong>Tu control.</strong> Puedes desactivar Autopilot por servidor, en cualquier momento y con efecto inmediato, desde el Panel.</p>
+<p><strong>Naturaleza del servicio.</strong> Autopilot utiliza sistemas de inteligencia artificial. Ponemos cuidado profesional en su diseño y supervisión, pero <strong>no garantizamos que resuelva todos los incidentes ni que cada diagnóstico sea correcto</strong>. Las acciones se limitan deliberadamente a operaciones reversibles y de bajo riesgo. La supervisión humana se presta de lunes a viernes.</p>
+<p><strong>Cambios en la lista.</strong> Podemos añadir Acciones Permitidas avisándote con 15 días; las nuevas acciones no se ejecutan en tus servidores hasta vencido ese plazo, y puedes excluirlas desde el Panel. La retirada de acciones puede ser inmediata.</p>
+<h2>8. Copias de seguridad: herramienta nuestra, copias tuyas</h2>
+<ul>
+<li>El Panel programa copias diarias de las bases de datos gestionadas, comprimidas y cifradas, <strong>hacia tu Bucket</strong>: tus credenciales, tu proveedor, tu costo.</li>
+<li><strong>Las copias son tuyas y no las almacenamos.</strong> Para ejecutar los respaldos, el Panel guarda de forma cifrada las credenciales de tu Bucket y las claves de cifrado; se usan exclusivamente para operar el servicio.</li>
+<li>Nosotros vigilamos que cada copia se complete y te avisamos si falla. <strong>Restaurar tus copias y comprobarlas periódicamente es responsabilidad tuya</strong>, salvo que contrates el complemento de restauración certificada o el plan Gestión, en cuyo caso ejecutamos una restauración de prueba mensual — incluida la verificación de descifrado — y te entregamos el resultado por escrito, sea cual sea.</li>
+<li>No cubrimos: archivos fuera de las bases de datos gestionadas, volúmenes creados por tu cuenta, ni datos en servicios externos. Si tienes datos críticos fuera, configúralos tú o pídenos ayuda en Gestión.</li>
+<li>Mantener tu Bucket operativo y pagado es responsabilidad tuya: si tu proveedor de almacenamiento suspende tu cuenta, tus copias dejan de existir y no podemos evitarlo.</li>
+</ul>
+<h2>9. Acceso a tu servidor</h2>
+<p>Para prestar el servicio necesitamos acceso administrativo a los servidores que conectes. Al conectarlos nos lo autorizas, con estos límites: lo usamos solo para prestar el servicio descrito; no accedemos al contenido de tus aplicaciones salvo que sea imprescindible para resolver una incidencia que nos comuniques o para los servicios de restauración contratados; y puedes revocarlo cuando quieras (lo que impide prestar el servicio en ese servidor). Tú conservas tu propio acceso administrativo en todo momento: <strong>nunca seremos el único administrador de tu máquina.</strong></p>
+<h2>10. Tus obligaciones</h2>
+<ul>
+<li>Pagar conforme a la cláusula 12 y mantener al corriente tus cuentas con tus proveedores de servidor y almacenamiento.</li>
+<li>Custodiar tus credenciales de acceso al Panel; activa la verificación en dos pasos. Eres responsable de la actividad realizada desde tu cuenta.</li>
+<li>Indicarnos los dominios y aplicaciones a vigilar, y mantener actualizada tu información de contacto para avisos.</li>
+<li>En el plan Panel, administrar tu servidor (sistema operativo, actualizaciones) con diligencia razonable.</li>
+<li>Cumplir la política de uso aceptable de la cláusula 11.</li>
+</ul>
+<h2>11. Uso aceptable</h2>
+<p>No puedes usar el servicio, ni servidores conectados a él, para: actividades ilegales; envío masivo de correo no solicitado; phishing, malware o ataques a terceros; minería de criptomonedas no declarada; vulneración de derechos de terceros; alojamiento de contenido ilícito; eludir sanciones o controles de exportación de EE. UU. aplicables; ni para revender el servicio sin acuerdo escrito con nosotros.</p>
+<p>Si detectamos un uso abusivo, te avisamos de inmediato y podemos tomar medidas de contención proporcionales sobre el servidor afectado — limitar tráfico, detener contenedores — <strong>para protegerte a ti</strong>: tu cuenta con tu proveedor está en juego. Si el abuso continúa o es grave, podemos suspender o cancelar conforme a la cláusula 14. Reportes de abuso: abuse@a3bhub.cloud.</p>
+<h2>12. Precios y pago</h2>
+<ul>
+<li><strong>Panel</strong>: 5,99 $/mes el primer servidor; 2,49 $/mes por servidor del 2.º al 10.º; 1,99 $/mes del 11.º en adelante.</li>
+<li><strong>Autopilot</strong>: 19 $/mes por servidor activado. <strong>Gestión</strong>: 39 $/mes por servidor. <strong>Complemento de restauración certificada</strong>: 12 $/mes por servidor.</li>
+<li><strong>Pago anual</strong>: doce meses al precio de diez, en todos los planes. En Gestión incluye además la puesta en marcha sin costo.</li>
+<li>Facturación por adelantado, en dólares estadounidenses, con tarjeta a través de Stripe, desde A3B Cloud LLC. Los impuestos aplicables se añaden según tu ubicación. Los cambios de servidores dentro del mes se prorratean en el siguiente ciclo.</li>
+<li><strong>Referidos</strong>: un mes gratis por cada cliente referido que active un servidor de pago, aplicado como crédito. El programa puede modificarse o cerrarse a nuevas altas con aviso.</li>
+<li><strong>Fundadores de Gestión</strong>: a los diez primeros clientes del plan Gestión no les aplicamos subidas de precio durante sus primeros doce meses de servicio.</li>
+<li><strong>Cambios de precio</strong>: con 30 días de aviso; si no te encaja, cancela sin coste antes de que aplique.</li>
+<li><strong>Impago</strong>: si un cobro falla, lo reintentamos y te avisamos; el servicio de vigilancia y Autopilot puede suspenderse a los 7 días y la suscripción cancelarse a los 15. Nada tuyo se apaga ni se borra: el servidor y las copias son tuyos.</li>
+<li><strong>Contracargos</strong>: si inicias un contracargo sin contactarnos antes, podemos suspender la cuenta mientras se resuelve. Preferimos devolverte el dinero a pelear: escríbenos primero.</li>
+</ul>
+<h2>13. Propiedad intelectual</h2>
+<ul>
+<li>El Panel, Autopilot, nuestras marcas y nuestro contenido son de A3B Cloud o de sus licenciantes. Te concedemos una licencia limitada, no exclusiva e intransferible para usar el servicio mientras la suscripción esté activa.</li>
+<li><strong>Tu contenido es tuyo</strong>: aplicaciones, código, datos y copias. Nos concedes solo los permisos técnicos imprescindibles para operar el servicio que contrataste.</li>
+<li>El Panel está construido sobre software de código abierto bajo licencia Apache 2.0; las atribuciones correspondientes están disponibles en el propio Panel. Nada en estos términos limita los derechos que ese software te otorga por su propia licencia.</li>
+<li>Si nos envías sugerencias o ideas, podemos usarlas sin obligación ni compensación.</li>
+</ul>
+<h2>14. Duración, cancelación y efectos</h2>
+<ul>
+<li><strong>Sin permanencia.</strong> Puedes cancelar cualquier plan o servidor con 15 días de aviso desde el Panel. Nosotros podemos cancelar con 30 días de aviso, o de inmediato en caso de uso abusivo, ilegal o impago conforme a la cláusula 12.</li>
+<li><strong>Al terminar</strong>: retiramos nuestro acceso y desactivamos la vigilancia y Autopilot. <strong>No tocamos tu servidor</strong>: tus aplicaciones siguen corriendo y tus copias siguen en tu bucket. Te entregamos las credenciales pertinentes y la guía de transición a un panel autoinstalado. Los datos de tu cuenta se tratan según la Política de Privacidad.</li>
+<li>Las cláusulas que por su naturaleza deban sobrevivir (propiedad intelectual, confidencialidad, responsabilidad, indemnización, ley aplicable) sobreviven a la terminación.</li>
+</ul>
+<h2>15. Confidencialidad</h2>
+<p>Lo que conozcamos de tu negocio al prestar el servicio es confidencial y no lo compartimos con nadie salvo obligación legal o con proveedores sujetos a deberes equivalentes. Esta obligación sobrevive a la terminación del contrato.</p>
+<h2>16. Protección de datos</h2>
+<p>El tratamiento de datos personales se rige por nuestra <a href="https://a3bhub.cloud/privacidad.html">Política de Privacidad</a>. Cuando tus aplicaciones traten datos personales de tus usuarios y nuestro servicio implique acceso incidental a ellos, actuamos como encargado del tratamiento por tu cuenta; tenemos disponible un <strong>acuerdo de encargo de tratamiento (DPA)</strong> — pídelo a support@a3bhub.cloud.</p>
+<h2>17. Garantías y limitación de responsabilidad</h2>
+<p>Prestamos el servicio con cuidado razonable y profesional. Salvo lo expresamente indicado, el servicio se presta «tal cual»: no garantizamos que sea ininterrumpido o libre de errores, y <strong>no ofrecemos compromiso de disponibilidad con penalización</strong>. No prestamos asesoría legal, fiscal ni de cumplimiento.</p>
+<p><strong>Nuestra responsabilidad total y agregada se limita al importe que nos hayas pagado en los tres (3) meses anteriores al hecho que la origine.</strong> No respondemos de lucro cesante, pérdida de negocio, pérdida de datos que residan en tu infraestructura, ni daños indirectos o consecuenciales.</p>
+<p>No respondemos, en particular, de daños causados por: fallos o decisiones de tus proveedores de servidor o almacenamiento; tus propias aplicaciones o cambios que realices; el uso de tus credenciales por terceros; copias no restaurables cuando la restauración era responsabilidad tuya; ni <strong>Acciones Permitidas ejecutadas por Autopilot conforme a la autorización de la cláusula 7</strong>, sin perjuicio de nuestra obligación de diseñarlas y supervisarlas con cuidado profesional.</p>
+<p>Nada de lo anterior limita la responsabilidad que la ley aplicable no permita limitar, ni los derechos irrenunciables que te correspondan como consumidor en tu país de residencia.</p>
+<h2>18. Indemnización</h2>
+<p>Nos mantendrás indemnes frente a reclamaciones de terceros derivadas de tu contenido, tus aplicaciones, tu incumplimiento de estos términos o tu uso ilegal del servicio, incluyendo costos razonables de defensa.</p>
+<h2>19. Fuerza mayor</h2>
+<p>Ninguna parte responde por incumplimientos causados por hechos fuera de su control razonable (desastres, fallos generalizados de internet o de proveedores esenciales, actos de autoridad), mientras duren.</p>
+<h2>20. Cambios en el servicio y en los términos</h2>
+<p>El servicio evoluciona: podemos mejorar, sustituir o retirar funcionalidades. Si retiramos una funcionalidad material de tu plan, te avisaremos con 30 días. Los cambios de estos términos se avisan con 30 días por correo; si no te encajan, puedes cancelar sin coste antes de su entrada en vigor. Funciones marcadas como «beta» pueden cambiar o retirarse sin ese plazo.</p>
+<h2>21. Disposiciones generales</h2>
+<ul>
+<li><strong>Ley y fuero</strong>: estos términos se rigen por la ley del Estado de Delaware, EE. UU., y las disputas se someten a sus tribunales, sin perjuicio de las normas imperativas de protección al consumidor de tu residencia.</li>
+<li><strong>Cesión</strong>: no puedes ceder el contrato sin nuestro consentimiento; nosotros podemos cederlo en caso de reorganización o venta del negocio, avisándote.</li>
+<li><strong>Divisibilidad</strong>: si una cláusula resulta inválida, el resto sigue vigente.</li>
+<li><strong>Acuerdo completo</strong>: estos términos y la Política de Privacidad constituyen el acuerdo íntegro y sustituyen a versiones anteriores.</li>
+<li><strong>Idioma</strong>: la versión en español es la vinculante mientras no publiquemos una versión en inglés indicando lo contrario.</li>
+<li><strong>Notificaciones</strong>: por correo a la dirección de tu cuenta y avisos en el Panel.</li>
+</ul>
+<h2>22. Contacto</h2>
+<p>support@a3bhub.cloud · abuse@a3bhub.cloud · A3B Cloud LLC, [DIRECCIÓN REGISTRADA], Delaware, EE. UU.</p>
+<hr />
+<p><em>Este documento describe el servicio tal y como se presta hoy. Si algo de lo que dice no coincide con lo que se te prometió por escrito, avísanos y lo corregimos.</em></p>
+  </div>
+</main>
+<footer>
+  <div class="foot">
+    <span class="foot-sub">A3B Cloud LLC · Delaware, EE. UU.</span>
+    <nav class="foot-links">
+      <a href="terminos.html">Términos</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="responsabilidad.html">Responsabilidad</a>
+      <a href="index.html">Inicio</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
