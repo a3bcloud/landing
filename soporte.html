@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soporte — A3B Cloud</title>
+<meta name="description" content="Cómo contactar soporte de A3B Cloud, qué esperar por plan, qué incluir en tu mensaje y qué está fuera de nuestro alcance.">
+<meta name="theme-color" content="#0D1211">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090b;--bg-2:#0d0f13;--surface:#111419;--surface-2:#171b22;--text:#e9eaee;--muted:#8b919c;--faint:#767d8a;--signal:#2ce58c;--signal-dim:#1d9c61;--danger:#ff5d5d;--amber:#ffb24d;--border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.14);--mono:"JetBrains Mono",ui-monospace,monospace;--disp:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--signal);color:#04130b}
+a{color:var(--signal);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,9,11,.6);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1160px;margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;font-size:17px;color:var(--text);letter-spacing:-.01em}
+.brand:hover{text-decoration:none}
+.brand img{width:30px;height:30px;display:block}
+.brand span b{color:var(--signal)}
+.nav-back{font-size:14px;color:var(--muted)}
+.nav-back:hover{color:var(--text);text-decoration:none}
+.doc-hero{padding:72px 0 40px;border-bottom:1px solid var(--border);background:radial-gradient(600px 300px at 80% 0%,rgba(44,229,140,.07),transparent 70%)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)}
+.doc-hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(32px,5vw,50px);letter-spacing:-.03em;line-height:1.06;margin-top:14px}
+.doc-hero .lead{color:var(--muted);font-size:clamp(15px,1.8vw,17px);margin-top:16px;max-width:64ch}
+main{padding:48px 0 90px}
+main h2{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.015em;margin:52px 0 16px;padding-top:22px;border-top:1px solid var(--border)}
+main h2:first-child{border-top:none;margin-top:0;padding-top:0}
+main p{color:var(--muted);margin:14px 0;max-width:74ch}
+main p strong,main li strong{color:var(--text);font-weight:600}
+main ul,main ol{margin:14px 0 14px 22px;color:var(--muted);max-width:72ch}
+main li{margin:8px 0}
+main code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1px 6px;color:var(--text)}
+
+/* Cards del canal principal */
+.channel-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0 6px}
+@media(max-width:640px){.channel-grid{grid-template-columns:1fr}}
+.channel{border:1px solid var(--border);background:var(--surface);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:8px}
+.channel.primary{border-color:rgba(44,229,140,.35);background:linear-gradient(180deg,rgba(44,229,140,.06),rgba(44,229,140,.015))}
+.channel .ico{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:var(--signal);text-transform:uppercase}
+.channel h3{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:-.015em;color:var(--text)}
+.channel p{margin:0;color:var(--muted);font-size:14.5px}
+.channel a.btn{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-weight:600;font-size:14px;padding:9px 16px;border-radius:9px;background:var(--signal);color:#04130b;width:fit-content}
+.channel a.btn:hover{text-decoration:none;transform:translateY(-1px);transition:transform .15s}
+.channel a.btn.ghost{background:transparent;border:1px solid var(--border-2);color:var(--text)}
+.channel .note{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+/* Tabla SLA */
+.sla-table{overflow-x:auto;border:1px solid var(--border);border-radius:14px;margin:22px 0;background:var(--surface)}
+.sla-table table{width:100%;border-collapse:collapse;min-width:560px;font-size:14px}
+.sla-table th,.sla-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;color:var(--muted)}
+.sla-table th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);background:rgba(255,255,255,.02);white-space:nowrap}
+.sla-table td:first-child{color:var(--text);font-weight:600;font-family:var(--disp)}
+.sla-table tr:last-child td{border-bottom:none}
+.sla-table .badge{display:inline-block;padding:2px 8px;border-radius:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;background:rgba(44,229,140,.12);color:var(--signal);border:1px solid rgba(44,229,140,.28)}
+
+/* Checklist + Fuera-de-scope columnas */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0}
+@media(max-width:760px){.two-col{grid-template-columns:1fr}}
+.two-col .col{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--bg-2)}
+.two-col .col h3{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--text);margin-bottom:12px}
+.two-col .col.yes h3::before{content:"✓  ";color:var(--signal);font-weight:700}
+.two-col .col.no h3::before{content:"✗  ";color:var(--amber);font-weight:700}
+.two-col ul{margin:0;padding-left:20px}
+.two-col li{color:var(--muted);font-size:14.5px;margin:8px 0}
+.two-col li strong{color:var(--text)}
+
+/* CTA final */
+.cta{margin-top:60px;padding:28px 30px;border:1px solid rgba(44,229,140,.25);background:linear-gradient(180deg,rgba(44,229,140,.07),rgba(44,229,140,.015));border-radius:16px;text-align:center}
+.cta h3{font-family:var(--disp);font-weight:700;font-size:22px;color:var(--text);margin-bottom:6px}
+.cta p{color:var(--muted);margin:0 auto 16px;max-width:56ch}
+.cta a.btn{display:inline-block;font-weight:600;font-size:15px;padding:12px 22px;border-radius:11px;background:var(--signal);color:#04130b}
+.cta a.btn:hover{text-decoration:none;transform:translateY(-2px);transition:transform .15s;box-shadow:0 10px 30px -10px var(--signal)}
+
+footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--bg-2)}
+.foot{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-links a{color:var(--muted);font-size:13.5px}
+.foot-links a:hover{color:var(--text);text-decoration:none}
+.foot-sub{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+@media(max-width:640px){.doc-hero{padding:52px 0 32px} main{padding:36px 0 70px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="assets/icono-oscuro.svg" alt=""><span>A3B<b>&nbsp;Cloud</b></span></a>
+    <a class="nav-back" href="index.html">← Volver al sitio</a>
+  </div>
+</header>
+
+<section class="doc-hero">
+  <div class="wrap">
+    <span class="kicker">Soporte</span>
+    <h1>Aquí respondemos personas.</h1>
+    <p class="lead">Sin bots que te devuelven la primera pregunta reformulada. Escríbenos, te leemos y te contestamos con lo que sepamos — y si no sabemos, lo decimos también.</p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <h2>Canales</h2>
+    <div class="channel-grid">
+      <div class="channel primary">
+        <span class="ico">Email · principal</span>
+        <h3>support@a3bhub.cloud</h3>
+        <p>Para cualquier consulta: técnica, comercial, facturación, cambios de plan, incidentes. Es el canal que revisamos todos los días.</p>
+        <a class="btn" href="mailto:support@a3bhub.cloud?subject=Consulta%20-%20A3B%20Cloud">Escribir a soporte</a>
+        <span class="note">Lunes a viernes, horario laboral</span>
+      </div>
+      <div class="channel">
+        <span class="ico">Línea directa · Gestión</span>
+        <h3>WhatsApp / Telegram</h3>
+        <p>Solo para clientes del plan <strong>Gestión</strong>. Los datos del contacto se entregan al empezar el servicio, no son públicos para evitar ruido.</p>
+        <a class="btn ghost" href="mailto:support@a3bhub.cloud?subject=Solicito%20datos%20de%20l%C3%ADnea%20directa%20-%20Gesti%C3%B3n">Solicitar acceso</a>
+        <span class="note">Solo Gestión · L–V horario laboral</span>
+      </div>
+    </div>
+
+    <h2>Tiempos esperados por plan</h2>
+    <p>Estos son tiempos <strong>orientativos</strong>, no compromisos contractuales. Los compromisos vinculantes están en los <a href="terminos.html">términos del servicio</a> y solo aplican a Gestión. En Panel/Autopilot hacemos el mejor esfuerzo con las manos que tenemos.</p>
+    <div class="sla-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Canal</th>
+            <th>Tiempo orientativo</th>
+            <th>Horario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td>Email + comunidad</td>
+            <td>Cuando podamos</td>
+            <td>L–V mejor esfuerzo</td>
+          </tr>
+          <tr>
+            <td>Panel</td>
+            <td>Email</td>
+            <td>Típicamente &lt; 48 h hábiles</td>
+            <td>L–V horario laboral</td>
+          </tr>
+          <tr>
+            <td>Autopilot</td>
+            <td>Email prioritario</td>
+            <td>Típicamente &lt; 24 h hábiles</td>
+            <td>L–V horario laboral</td>
+          </tr>
+          <tr>
+            <td>Gestión</td>
+            <td>Email + WhatsApp/Telegram</td>
+            <td><span class="badge">Prioridad</span> — según lo pactado</td>
+            <td>L–V horario laboral</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Fuera de horario laboral, el <strong>agente Autopilot</strong> sigue vigilando 24/7 y actuando sobre la lista blanca de acciones (reinicio de contenedores <em>unhealthy</em>, rollback tras despliegues fallidos, limpieza de disco). Las personas respondemos al día hábil siguiente.</p>
+
+    <h2>Qué incluir en tu mensaje</h2>
+    <p>Con estos 4 datos resolvemos en la mitad del tiempo:</p>
+    <div class="two-col">
+      <div class="col yes">
+        <h3>Sí ayuda mucho</h3>
+        <ul>
+          <li><strong>UUID del servidor</strong> o URL del panel donde ocurre <em>(app.a3bhub.cloud/server/xxx…)</em></li>
+          <li><strong>Timestamp aproximado</strong> del incidente <em>(hora + zona horaria)</em></li>
+          <li><strong>Qué esperabas</strong> vs. <strong>qué pasó</strong> — una frase de cada</li>
+          <li><strong>Logs</strong> o screenshot del error si lo tienes</li>
+          <li>¿Cambió algo justo antes? <em>(deploy, cambio de config, actualización del SO)</em></li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3>Fuera de nuestro alcance</h3>
+        <ul>
+          <li><strong>Depurar tu código.</strong> Gestionamos y reparamos la infraestructura donde corre tu app, no la programamos.</li>
+          <li><strong>Recuperar datos de backups no configurados.</strong> Si nunca activaste copias hacia tu bucket, no las tenemos.</li>
+          <li><strong>Hablar con tu proveedor de VPS o DNS por ti.</strong> Te asistimos con el diagnóstico, pero el contrato es tuyo.</li>
+          <li><strong>Compliance de tu app.</strong> A3B Cloud gestiona infra; tú controlas los datos de tus usuarios y cumples con LGPD/GDPR/etc.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>¿Es una emergencia?</h2>
+    <p>Consideramos <strong>emergencia</strong>: tu servidor de producción no responde y está en tu plan <em>Autopilot</em> o <em>Gestión</em>. En ese caso, el agente ya está actuando (mira el registro de acciones en tu panel) y, si el problema persiste, se escala automáticamente por email al owner del equipo.</p>
+    <p>Si necesitas escalarlo manualmente, escribe con asunto <code>[URGENTE]</code> — vamos primero a esos mensajes en horario laboral.</p>
+    <p>Fuera de horario laboral no garantizamos respuesta humana inmediata, ni siquiera para Gestión — es una promesa que no podemos cumplir con integridad hoy. Lo decimos claro para que decidas si necesitas contratar además un proveedor 24/7.</p>
+
+    <h2>Estatus del sistema</h2>
+    <p>Cada cliente tiene su <strong>página de estado propia</strong> en el panel (recursos gestionados, salud de servidores, últimos incidentes). Si sospechas que el problema es nuestro (el panel <code>app.a3bhub.cloud</code> no carga, por ejemplo), escríbenos — sabremos si es incidente general o algo local a tu cuenta.</p>
+
+    <h2>¿Prefieres leer antes de escribir?</h2>
+    <p>Muchas dudas de primera hora las cubre la sección de <a href="index.html#preguntas">Preguntas incómodas</a> del sitio y el <a href="responsabilidad.html">Modelo de Responsabilidad Compartida</a> (quién responde por qué en cada plan).</p>
+
+    <div class="cta">
+      <h3>¿Todo listo?</h3>
+      <p>Escríbenos con los datos de arriba y te contestamos lo antes posible dentro del horario laboral.</p>
+      <a class="btn" href="mailto:support@a3bhub.cloud?subject=Consulta%20-%20A3B%20Cloud">Escribir a soporte</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="foot-sub">A3B CLOUD LLC · Panel · Autopilot · Gestión</div>
+    <div class="foot-links">
+      <a href="index.html">Inicio</a>
+      <a href="terminos.html">Términos</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="responsabilidad.html">Responsabilidad</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
