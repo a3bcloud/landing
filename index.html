@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
 /* ══════════════════════════════════════════════════════════════
    A3B CLOUD · Panel / Autopilot / Gestión
@@ -981,6 +982,7 @@ try{
     <form novalidate>
       <label for="signupEmail" class="signup-label">Tu correo</label>
       <input id="signupEmail" type="email" required autocomplete="email" placeholder="tu@correo.com" class="signup-input">
+      <div class="cf-turnstile signup-turnstile" data-sitekey="0x4AAAAAAELc6oEEUQTJoplv" data-action="turnstile-spin-v2" data-theme="dark"></div>
       <p class="signup-error" data-signup-error hidden></p>
       <button type="submit" class="btn btn-primary btn-big signup-submit" data-signup-submit>Ir a pagar</button>
     </form>
@@ -1002,6 +1004,7 @@ try{
 .signup-input{width:100%;background:var(--bg,#08090b);border:1px solid var(--border-2,rgba(255,255,255,.14));color:var(--text,#e9eaee);font-family:inherit;font-size:16px;padding:14px 16px;border-radius:10px;outline:none;transition:border-color .15s}
 .signup-input:focus{border-color:var(--signal,#2ce58c)}
 .signup-error{color:var(--danger,#ff5d5d);font-size:14px;margin:10px 0 0;padding:10px 12px;background:rgba(255,93,93,.08);border:1px solid rgba(255,93,93,.2);border-radius:8px}
+.signup-turnstile{margin-top:16px;display:flex;justify-content:center;min-height:65px}
 .signup-submit{width:100%;margin-top:16px;justify-content:center}
 .signup-submit:disabled{opacity:.6;cursor:progress}
 .signup-legal{color:var(--faint,#767d8a);font-size:12px;text-align:center;margin-top:18px;line-height:1.5}
@@ -1049,11 +1052,30 @@ try{
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)closeModal();});
   overlay.querySelector('[data-signup-close]').addEventListener('click',closeModal);
 
+  // Tokens Turnstile son single-use. Cualquier rama que NO navegue fuera
+  // (error de validacion cliente, error del servidor, error de red) debe
+  // resetear el widget para que el proximo submit obtenga un token fresco.
+  function resetTurnstile(){
+    try{window.turnstile&&window.turnstile.reset();}catch(_){}
+  }
+  function failSubmit(msg){
+    errorBox.textContent=msg;
+    errorBox.hidden=false;
+    submit.disabled=false;
+    submit.textContent='Ir a pagar';
+    resetTurnstile();
+  }
+
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var email=emailInput.value.trim();
     if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-      errorBox.textContent='Introduce un correo valido.';errorBox.hidden=false;return;
+      failSubmit('Introduce un correo valido.');return;
+    }
+    var tsField=form.querySelector('[name="cf-turnstile-response"]');
+    var tsToken=tsField?tsField.value:'';
+    if(!tsToken){
+      failSubmit('Completa la verificacion humana antes de continuar.');return;
     }
     var ctx=readContext();
     submit.disabled=true;submit.textContent='Creando sesion...';
@@ -1061,17 +1083,13 @@ try{
     fetch(api,{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({email:email,tier:currentTier,servers:ctx.servers,billing:ctx.billing})
+      body:JSON.stringify({email:email,tier:currentTier,servers:ctx.servers,billing:ctx.billing,'cf-turnstile-response':tsToken})
     }).then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
     .then(function(res){
       if(res.ok&&res.d.url){location.href=res.d.url;return;}
-      errorBox.textContent=res.d.error||'No se pudo iniciar el pago. Prueba de nuevo o escribe a support@a3bhub.cloud.';
-      errorBox.hidden=false;
-      submit.disabled=false;submit.textContent='Ir a pagar';
+      failSubmit(res.d.error||'No se pudo iniciar el pago. Prueba de nuevo o escribe a support@a3bhub.cloud.');
     }).catch(function(){
-      errorBox.textContent='Sin conexion con el servidor. Prueba de nuevo o escribe a support@a3bhub.cloud.';
-      errorBox.hidden=false;
-      submit.disabled=false;submit.textContent='Ir a pagar';
+      failSubmit('Sin conexion con el servidor. Prueba de nuevo o escribe a support@a3bhub.cloud.');
     });
   });
 })();
