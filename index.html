@@ -263,10 +263,14 @@ h1 .hl{background:linear-gradient(100deg,var(--signal) 10%,#9ff5cd 45%,var(--sig
 #precio[data-billing="monthly"] .only-a{display:none!important}
 #precio[data-billing="annual"] .only-m{display:none!important}
 
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;align-items:stretch;position:relative;z-index:1}
-@media(max-width:980px){.pricing-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px;align-items:stretch;position:relative;z-index:1}
+@media(max-width:1200px){.pricing-grid{grid-template-columns:repeat(2,1fr);max-width:780px;margin-left:auto;margin-right:auto}}
+@media(max-width:640px){.pricing-grid{grid-template-columns:1fr;max-width:520px}}
 .price{border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;position:relative;background:var(--surface);border:1px solid var(--border)}
 .price.feat{border:none;padding:34px 30px}
+.price.free{background:var(--bg-2);border-color:rgba(255,255,255,.06)}
+.price.free .ptier{color:var(--muted)}
+.price.free .pp .n{background:linear-gradient(100deg,#fff 20%,#a8b0bd 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .price .tag{position:absolute;top:-13px;left:26px;background:var(--signal);color:#04130b;font-family:var(--mono);font-size:11px;font-weight:700;padding:5px 13px;border-radius:7px;letter-spacing:.03em;box-shadow:0 6px 20px -6px var(--signal)}
 .price .ptier{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;color:var(--signal);text-transform:uppercase;margin-bottom:9px}
 .price .pname{font-family:var(--disp);font-weight:800;font-size:23px;letter-spacing:-.015em}
@@ -281,7 +285,8 @@ h1 .hl{background:linear-gradient(100deg,var(--signal) 10%,#9ff5cd 45%,var(--sig
 .price li::before{content:"✓";position:absolute;left:0;color:var(--signal);font-weight:700}
 .price li.plus::before{content:"+";color:var(--amber)}
 .price li b{font-weight:600}
-.price li small{color:var(--faint)}
+.price li small{display:block;color:var(--faint);font-size:11.5px;margin-top:3px;line-height:1.45}
+.price li code{font-family:var(--mono);font-size:11.5px;color:var(--signal);background:rgba(44,229,140,.08);padding:1px 5px;border-radius:3px}
 .price .btn{justify-content:center}
 .price .pnote{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:center;margin-top:12px}
 .price .pnote a{color:var(--muted);border-bottom:1px dotted var(--faint)}
@@ -620,8 +625,30 @@ try{
     </div>
 
     <div class="pricing-grid">
+      <!-- FREE -->
+      <div class="price free reveal">
+        <span class="ptier">Para empezar</span>
+        <span class="pname">Free</span>
+        <span class="pwho">para probar la plataforma sin tarjeta</span>
+        <div class="pp"><span class="n">$0</span><span class="per">/mes · perpetuo</span></div>
+        <p class="psub">sin tarjeta · sin caducidad</p>
+        <ul>
+          <li><b>1 servidor</b> conectado</li>
+          <li>Panel completo con <b>despliegues manuales ilimitados</b></li>
+          <li><b>Deploy AI</b> <span style="opacity:.65;font-size:.85em;font-family:var(--mono)">(beta)</span> con rate limit básico</li>
+          <li>Avisos por email</li>
+          <li>Comunidad y documentación</li>
+          <li>Ideal para <b>proyectos personales</b> y pruebas</li>
+          <li class="plus" style="color:var(--faint)">Sin Autopilot <small>reinicios y rollbacks manuales</small></li>
+          <li class="plus" style="color:var(--faint)">Sin copias externas a S3 <small>solo copias locales al servidor</small></li>
+          <li class="plus" style="color:var(--faint)">Sin equipos ni API tokens</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://app.a3bhub.cloud/register">Empieza gratis</a>
+        <p class="pnote">upgrade a Panel o Autopilot en cualquier momento</p>
+      </div>
+
       <!-- PANEL -->
-      <div class="price reveal">
+      <div class="price reveal d1">
         <span class="ptier">Te avisamos</span>
         <span class="pname">Panel</span>
         <span class="pwho">para quien administra su servidor</span>
@@ -630,10 +657,12 @@ try{
         <p class="psub only-a" id="pPanelSubA">facturado <b>$59.90/año</b></p>
         <ul>
           <li><b>Panel completo</b> y despliegues ilimitados</li>
-          <li>Copias diarias cifradas <b>hacia tu bucket</b></li>
-          <li><b>Vigilancia horaria externa</b> de tus webs</li>
-          <li>Avisos por email, Telegram y Discord</li>
-          <li>Estado público, informes y equipos ilimitados</li>
+          <li><b>Deploy AI</b> <span style="opacity:.65;font-size:.85em;font-family:var(--mono)">(beta)</span>: describes la app en español y generamos Dockerfile + compose + env vars en 15s</li>
+          <li>Copias diarias cifradas hacia <b>tu bucket S3</b> · retención configurable</li>
+          <li><b>Vigilancia externa periódica</b> de tus webs</li>
+          <li>Avisos por email, Telegram, Discord, Slack y webhook</li>
+          <li>Página de <b>estado público</b> con dominio propio</li>
+          <li><b>Miembros y equipos ilimitados</b> con roles (owner/admin/member)</li>
           <li>Soporte por email L–V</li>
           <li class="plus">Restauración certificada: <b>+$12</b>/servidor <small>opcional</small></li>
         </ul>
@@ -642,7 +671,7 @@ try{
       </div>
 
       <!-- AUTOPILOT -->
-      <div class="price feat glow-card reveal d1">
+      <div class="price feat glow-card reveal d2">
         <span class="tag">NUEVO · GUARDIA 24/7</span>
         <span class="ptier">Lo resolvemos — autónomo</span>
         <span class="pname">Autopilot</span>
@@ -652,12 +681,14 @@ try{
         <p class="psub only-a" id="pAutoSubA">facturado <b>$190/año</b> por servidor</p>
         <ul>
           <li><b>Todo lo del Panel</b>, más:</li>
-          <li>Agente que <b>diagnostica y repara solo</b>, 24/7</li>
-          <li>Lista de acciones permitidas, <b>pública</b></li>
-          <li>Reversión de despliegues rotos y limpieza de disco</li>
-          <li><b>Informe de cada incidente</b>: causa, acción, resultado</li>
-          <li>Escalado a humanos con diagnóstico hecho (L–V)</li>
-          <li>Botón de apagado por servidor</li>
+          <li>Agente que <b>diagnostica y repara solo</b>, detección 24/7</li>
+          <li><b>3 reglas whitelisted</b> (nada de LLM decidiendo):
+              <small>reinicia contenedor <code>unhealthy</code> (1 intento), rollback tras 3 despliegues fallidos, <code>docker system prune</code> si disco &gt; 85%</small></li>
+          <li>Lista de acciones permitidas, <b>pública y auditable</b></li>
+          <li><b>Informe por incidente</b>: causa raíz, acción tomada, resultado</li>
+          <li>Escalado a humanos con diagnóstico hecho (<b>L–V</b>, horario laboral)</li>
+          <li>Botón de apagado por servidor (kill switch)</li>
+          <li>Historial completo de acciones con timestamp y logs</li>
           <li class="plus">Restauración certificada: <b>+$12</b>/servidor <small>opcional</small></li>
         </ul>
         <button type="button" class="btn btn-primary" data-signup="autopilot">Prueba 14 días</button>
@@ -665,7 +696,7 @@ try{
       </div>
 
       <!-- GESTIÓN -->
-      <div class="price reveal d2">
+      <div class="price reveal d3">
         <span class="ptier">Nosotros, con manos</span>
         <span class="pname">Gestión</span>
         <span class="pwho">para el servidor que factura</span>
@@ -674,13 +705,15 @@ try{
         <p class="psub only-a">facturado <b>$390/año</b> · <b>puesta en marcha gratis</b></p>
         <ul>
           <li><b>Todo lo de Autopilot</b>, más:</li>
-          <li>Servidor <b>endurecido</b> desde cero</li>
-          <li><b>Parches de seguridad aplicados</b> por nosotros</li>
-          <li><b>Restauración mensual certificada</b> incluida</li>
+          <li>Servidor <b>endurecido desde cero</b>: OpenSSH hardening, ufw, fail2ban, kernel tuned</li>
+          <li><b>Auditoría inicial de seguridad</b> con reporte entregado</li>
+          <li><b>Parches de seguridad aplicados</b> por nosotros (kernel + Docker + deps)</li>
+          <li><b>Restauración mensual certificada</b> incluida (probamos que el backup restaura)</li>
           <li>Migración inicial incluida (hasta 3 apps)</li>
-          <li>Revisión trimestral de salud y costos</li>
-          <li>Simulacro anual de desastre, con tiempos reales</li>
-          <li><b>Línea directa</b> (WhatsApp/Telegram) L–V</li>
+          <li>Revisión trimestral de salud, costos y capacidad</li>
+          <li>Simulacro anual de desastre, con tiempos medidos y RTO documentado</li>
+          <li><b>Línea directa</b> (WhatsApp/Telegram) L–V en horario laboral</li>
+          <li>Baseline de configuración documentado, entregado al cliente</li>
         </ul>
         <a class="btn btn-ghost" href="mailto:support@a3bhub.cloud?subject=Gesti%C3%B3n%20-%20A3B%20Cloud">Hablemos antes de que pagues</a>
         <p class="pnote">10 plazas fundador · precio congelado 12 meses · garantía 30 días</p>
