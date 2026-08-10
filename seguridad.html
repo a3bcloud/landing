@@ -79,7 +79,7 @@ main code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);bo
 .callout p{margin:6px 0;color:var(--muted)}
 .callout code{display:block;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:10px 0;font-family:var(--mono);font-size:12.5px;color:var(--text);overflow-x:auto;white-space:pre}
 
-/* Lista de acciones whitelisted Autopilot */
+/* Lista de acciones whitelisted A3B Autopilot */
 .whitelist{border:1px solid var(--border);border-radius:14px;background:var(--surface);padding:6px 0;margin:22px 0}
 .whitelist-item{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px}
 .whitelist-item:last-child{border-bottom:none}
@@ -117,7 +117,7 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
   <div class="wrap">
     <span class="kicker">Seguridad</span>
     <h1>Cifrado real, accesos mínimos, y cómo cortarnos si hace falta.</h1>
-    <p class="lead">No decimos <em>"no podemos ver tus datos"</em> porque no sería del todo cierto: para gestionar tu servidor por SSH, el panel necesita una llave. Lo que sí prometemos es cifrar todo lo sensible en reposo, minimizar los accesos, dejar rastro de todo lo que hace el Autopilot, y darte un botón para revocarnos el acceso en menos de un minuto.</p>
+    <p class="lead">No decimos <em>"no podemos ver tus datos"</em> porque no sería del todo cierto: para gestionar tu servidor por SSH, el panel necesita una llave. Lo que sí prometemos es cifrar todo lo sensible en reposo, minimizar los accesos, dejar rastro de todo lo que hace el A3B Autopilot, y darte un botón para revocarnos el acceso en menos de un minuto.</p>
     <p class="doc-meta">A3B CLOUD LLC · Versión 1.0 · 9 de agosto de 2026</p>
   </div>
 </section>
@@ -199,7 +199,7 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
         <ul>
           <li>La <strong>lista de tus servidores</strong> y sus datos técnicos (IP, proveedor, sistema operativo).</li>
           <li>Los <strong>nombres</strong> de tus apps, bases de datos y servicios.</li>
-          <li>El <strong>uso de recursos</strong> agregado (CPU, RAM, disco) que reporta el Autopilot.</li>
+          <li>El <strong>uso de recursos</strong> agregado (CPU, RAM, disco) que reporta el A3B Autopilot.</li>
           <li>Tu <strong>email</strong> y datos de facturación básicos.</li>
         </ul>
       </div>
@@ -217,7 +217,7 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
     <p>Con la llave maestra del panel podríamos, técnicamente, descifrar las variables de entorno y usar la llave SSH que guardas para gestionar tu servidor. Por eso lo siguiente importa tanto:</p>
 
     <h2>Nuestro acceso a tu infraestructura</h2>
-    <p>Cuando conectas un servidor, el panel guarda una llave SSH pública en <code>~/.ssh/authorized_keys</code> de tu servidor. Sin eso no habría "gestión remota": es la puerta por donde pasan los despliegues, los reinicios del Autopilot y los backups.</p>
+    <p>Cuando conectas un servidor, el panel guarda una llave SSH pública en <code>~/.ssh/authorized_keys</code> de tu servidor. Sin eso no habría "gestión remota": es la puerta por donde pasan los despliegues, los reinicios del A3B Autopilot y los backups.</p>
     <p><strong>El corolario incómodo</strong>: mientras esa llave esté en tu servidor, alguien con acceso físico al panel <em>y</em> a la <code>APP_KEY</code> podría, en teoría, usarla para conectarse. En la práctica:</p>
     <ul>
       <li>El acceso al panel de administración está restringido al owner de A3B CLOUD LLC, con <strong>autenticación en dos pasos</strong> obligatoria.</li>
@@ -232,8 +232,8 @@ sed -i '/coolify/d' ~/.ssh/authorized_keys</code>
       <p>Tras esto, el panel dejará de poder gestionar el servidor y aparecerá como <em>unreachable</em> en tu vista. El servidor y tus datos siguen funcionando; solo pierdes la gestión desde A3B Cloud. Si quieres volver, generamos una llave nueva y la añades.</p>
     </div>
 
-    <h2>Autopilot es transparente por diseño</h2>
-    <p>El agente Autopilot no usa modelos de lenguaje para <em>decidir</em> qué hacer. Todo lo que ejecuta viene de una <strong>lista pública y auditable</strong> de acciones, hoy con tres reglas:</p>
+    <h2>A3B Autopilot es transparente por diseño</h2>
+    <p>El agente A3B Autopilot no usa modelos de lenguaje para <em>decidir</em> qué hacer. Todo lo que ejecuta viene de una <strong>lista pública y auditable</strong> de acciones, hoy con tres reglas:</p>
     <div class="whitelist">
       <div class="whitelist-item">
         <span class="num">01</span>
@@ -257,7 +257,7 @@ sed -i '/coolify/d' ~/.ssh/authorized_keys</code>
         </div>
       </div>
     </div>
-    <p>Cada intervención queda registrada en tu panel con timestamp, comando exacto ejecutado, resultado y una explicación en español generada por un modelo de lenguaje (<em>Claude Haiku 4.5</em>) usada <strong>solo para redactar</strong> el resumen del incidente, jamás para decidir qué hacer. Puedes desactivar Autopilot por servidor con un clic (<em>kill switch</em>) o globalmente para tu equipo.</p>
+    <p>Cada intervención queda registrada en tu panel con timestamp, comando exacto ejecutado, resultado y una explicación en español generada por un modelo de lenguaje (<em>Claude Haiku 4.5</em>) usada <strong>solo para redactar</strong> el resumen del incidente, jamás para decidir qué hacer. Puedes desactivar A3B Autopilot por servidor con un clic (<em>kill switch</em>) o globalmente para tu equipo.</p>
 
     <h2>Autenticación de tu cuenta</h2>
     <ul>
@@ -322,7 +322,7 @@ sed -i '/coolify/d' ~/.ssh/authorized_keys</code>
           <tr>
             <td>Audit log estructurado exportable</td>
             <td><span class="badge wip">Parcial</span></td>
-            <td>Autopilot registra sus acciones en el panel. Un log de accesos admin exportable en JSON está en la lista para el próximo trimestre.</td>
+            <td>A3B Autopilot registra sus acciones en el panel. Un log de accesos admin exportable en JSON está en la lista para el próximo trimestre.</td>
           </tr>
           <tr>
             <td>DPA (Data Processing Agreement) firmado</td>
@@ -337,7 +337,7 @@ sed -i '/coolify/d' ~/.ssh/authorized_keys</code>
     <p>Todo lo de arriba no vale mucho si no lo puedes comprobar. Te dejamos hilos para tirar:</p>
     <ul>
       <li><strong>El panel corre sobre un <em>fork</em> de <a href="https://coolify.io" target="_blank" rel="noopener">Coolify</a></strong>, un proyecto open source. Puedes inspeccionar los mecanismos de cifrado y el flujo de deploy leyendo el código base.</li>
-      <li><strong>La lista de acciones del Autopilot</strong> vive en el archivo <code>config/autopilot.php</code> del panel y se refleja en tu vista del agente. Cualquier cambio queda en el historial de despliegues.</li>
+      <li><strong>La lista de acciones del A3B Autopilot</strong> vive en el archivo <code>config/autopilot.php</code> del panel y se refleja en tu vista del agente. Cualquier cambio queda en el historial de despliegues.</li>
       <li><strong>Los accesos a tu servidor</strong> aparecen en <code>/var/log/auth.log</code> del propio servidor — puedes correlacionar con la actividad del panel para verificar que nadie más ha tocado nada.</li>
       <li><strong>El certificado TLS</strong> del panel y de tus dominios lo emite Let's Encrypt y puedes inspeccionarlo con <code>openssl s_client</code> o desde tu navegador.</li>
     </ul>
@@ -361,7 +361,7 @@ sed -i '/coolify/d' ~/.ssh/authorized_keys</code>
 
     <div class="cta">
       <h3>¿Dudas de seguridad antes de firmar?</h3>
-      <p>Si necesitas una llamada con evidencia técnica (arquitectura, cifrado, logs, DPA) antes de contratar Panel, Autopilot o Gestión, escríbenos y agendamos.</p>
+      <p>Si necesitas una llamada con evidencia técnica (arquitectura, cifrado, logs, DPA) antes de contratar Panel, A3B Autopilot o Gestión, escríbenos y agendamos.</p>
       <a class="btn" href="mailto:security@a3bhub.cloud?subject=Consulta%20seguridad%20-%20A3B%20Cloud">Escribir a security@</a>
     </div>
 
@@ -370,7 +370,7 @@ sed -i '/coolify/d' ~/.ssh/authorized_keys</code>
 
 <footer>
   <div class="foot">
-    <div class="foot-sub">A3B CLOUD LLC · Panel · Autopilot · Gestión</div>
+    <div class="foot-sub">A3B CLOUD LLC · Panel · A3B Autopilot · Gestión</div>
     <div class="foot-links">
       <a href="index.html">Inicio</a>
       <a href="terminos.html">Términos</a>

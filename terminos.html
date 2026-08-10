@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Términos del Servicio — A3B Cloud</title>
-<meta name="description" content="Términos del servicio de A3B Cloud: planes Panel, Autopilot y Gestión, copias hacia tu bucket, acciones automatizadas y condiciones completas.">
+<meta name="description" content="Términos del servicio de A3B Cloud: planes Panel, A3B Autopilot y Gestión, copias hacia tu bucket, acciones automatizadas y condiciones completas.">
 <meta name="theme-color" content="#0D1211">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -91,37 +91,37 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
 <li><strong>Panel</strong>: la aplicación web alojada por A3B Cloud en la que gestionas tus servidores y despliegues.</li>
 <li><strong>Servidor del Cliente</strong>: la máquina que tú contratas con tu proveedor de infraestructura y conectas al Panel. Es tuya y siempre lo será.</li>
 <li><strong>Bucket del Cliente</strong>: el almacenamiento de objetos (R2, S3, B2 u otro compatible) que tú contratas y al que se envían tus copias de seguridad.</li>
-<li><strong>Autopilot</strong>: el agente automatizado que, en los servidores donde lo actives, diagnostica incidentes y ejecuta Acciones Permitidas.</li>
-<li><strong>Acciones Permitidas</strong>: la lista cerrada de acciones operativas que Autopilot puede ejecutar, publicada en el Panel.</li>
+<li><strong>A3B Autopilot</strong>: el agente automatizado que, en los servidores donde lo actives, diagnostica incidentes y ejecuta Acciones Permitidas.</li>
+<li><strong>Acciones Permitidas</strong>: la lista cerrada de acciones operativas que A3B Autopilot puede ejecutar, publicada en el Panel.</li>
 <li><strong>Registro</strong>: el historial de comprobaciones, incidentes y acciones, visible en tu Panel.</li>
-<li><strong>Planes</strong>: Panel, Autopilot y Gestión, según se describen en la cláusula 4.</li>
+<li><strong>Planes</strong>: Panel, A3B Autopilot y Gestión, según se describen en la cláusula 4.</li>
 </ul>
 <h2>3. Descripción del servicio y arquitectura</h2>
-<p>El servicio consiste en: (a) acceso al Panel para desplegar y administrar aplicaciones en tus servidores; (b) programación de copias de seguridad de tus bases de datos hacia tu Bucket; (c) vigilancia externa de tus servidores y aplicaciones con avisos; y, según el plan, (d) remediación automatizada mediante Autopilot y/o (e) servicios de gestión humana.</p>
+<p>El servicio consiste en: (a) acceso al Panel para desplegar y administrar aplicaciones en tus servidores; (b) programación de copias de seguridad de tus bases de datos hacia tu Bucket; (c) vigilancia externa de tus servidores y aplicaciones con avisos; y, según el plan, (d) remediación automatizada mediante A3B Autopilot y/o (e) servicios de gestión humana.</p>
 <p><strong>La arquitectura es deliberada y conviene entenderla:</strong> el Panel es nuestro servicio alojado; <strong>tus aplicaciones, tus datos y tus copias residen en tu servidor y en tu bucket</strong>, contratados por ti con terceros. No alojamos tu contenido, no revendemos infraestructura y no somos tu proveedor de alojamiento. No respondemos de las caídas, precios o decisiones de tus proveedores.</p>
 <p>Consecuencia práctica: si dejas el servicio, tus contenedores siguen corriendo y tus copias siguen en tu bucket. Perderías el acceso al Panel; para ese caso te entregamos una guía de transición a un panel de software libre autoinstalado (cláusula 13).</p>
 <h2>4. Planes, complementos y combinación</h2>
 <ul>
 <li><strong>Panel</strong> («te avisamos»): acceso completo al Panel, despliegues ilimitados, copias diarias hacia tu Bucket, vigilancia horaria externa, avisos, página de estado, informes de disponibilidad y soporte por email de lunes a viernes. La administración del sistema operativo y del servidor es responsabilidad tuya.</li>
-<li><strong>Autopilot</strong> («lo resolvemos, autónomo»): todo lo del Panel más el agente de remediación automatizada 24/7 descrito en la cláusula 7, por cada servidor donde lo actives.</li>
-<li><strong>Gestión</strong> («nosotros, con manos»): todo lo de Autopilot más, por cada servidor contratado: configuración endurecida inicial, aplicación de parches de seguridad, restauración mensual de prueba con certificado escrito, migración inicial de hasta tres (3) aplicaciones, revisión trimestral de salud, simulacro anual de recuperación y línea directa de soporte de lunes a viernes.</li>
-<li><strong>Complemento de restauración certificada</strong>: disponible para servidores en Panel o Autopilot; ejecuta la restauración mensual de prueba con certificado descrita en la cláusula 8.</li>
+<li><strong>A3B Autopilot</strong> («lo resolvemos, autónomo»): todo lo del Panel más el agente de remediación automatizada 24/7 descrito en la cláusula 7, por cada servidor donde lo actives.</li>
+<li><strong>Gestión</strong> («nosotros, con manos»): todo lo de A3B Autopilot más, por cada servidor contratado: configuración endurecida inicial, aplicación de parches de seguridad, restauración mensual de prueba con certificado escrito, migración inicial de hasta tres (3) aplicaciones, revisión trimestral de salud, simulacro anual de recuperación y línea directa de soporte de lunes a viernes.</li>
+<li><strong>Complemento de restauración certificada</strong>: disponible para servidores en Panel o A3B Autopilot; ejecuta la restauración mensual de prueba con certificado descrita en la cláusula 8.</li>
 <li>Los planes se contratan <strong>por servidor</strong> y son combinables dentro de una misma cuenta.</li>
 </ul>
 <h2>5. Beneficios incluidos y su alcance</h2>
 <p>Los beneficios «de serie» (equipos ilimitados, página de estado, informes, avisos de dominio y TLS, alertas de recursos, comunidad, facturación desde A3B CLOUD LLC) forman parte del servicio y pueden evolucionar. Los servicios acotados de Gestión tienen los límites indicados: la migración inicial cubre hasta 3 aplicaciones dentro de la puesta en marcha (adicionales, previa cotización); la revisión de salud es trimestral; el simulacro de recuperación es anual por servidor.</p>
 <h2>6. Prueba, garantía y alta</h2>
 <ul>
-<li><strong>Prueba de 14 días</strong> (Panel y Autopilot): requiere método de pago válido; el primer cobro se realiza al finalizar la prueba. Puedes cancelar durante la prueba desde el Panel sin cargo alguno.</li>
+<li><strong>Prueba de 14 días</strong> (Panel y A3B Autopilot): requiere método de pago válido; el primer cobro se realiza al finalizar la prueba. Puedes cancelar durante la prueba desde el Panel sin cargo alguno.</li>
 <li><strong>Garantía de 30 días</strong> (Gestión): si en los primeros 30 días el servicio no te convence, te devolvemos la primera cuota íntegra, sin preguntas. Aplica una vez por cliente y no cubre el costo de tu infraestructura.</li>
 <li><strong>Puesta en marcha de Gestión</strong>: $49 por servidor, pago único, gratuita con contratación anual.</li>
 </ul>
-<h2>7. Autopilot: autorización de acciones automatizadas</h2>
-<p>Esta cláusula es la más importante del plan Autopilot; léela completa.</p>
-<p><strong>Autorización.</strong> Al activar Autopilot en un servidor, nos autorizas expresamente a que un agente automatizado ejecute en ese servidor, sin intervención humana previa y en cualquier momento, las Acciones Permitidas publicadas en tu Panel, cuando la vigilancia detecte un incidente.</p>
+<h2>7. A3B Autopilot: autorización de acciones automatizadas</h2>
+<p>Esta cláusula es la más importante del plan A3B Autopilot; léela completa.</p>
+<p><strong>Autorización.</strong> Al activar A3B Autopilot en un servidor, nos autorizas expresamente a que un agente automatizado ejecute en ese servidor, sin intervención humana previa y en cualquier momento, las Acciones Permitidas publicadas en tu Panel, cuando la vigilancia detecte un incidente.</p>
 <p><strong>Límites por diseño.</strong> El agente: (a) solo puede ejecutar Acciones Permitidas — la lista es cerrada y visible en tu Panel antes de activar el servicio; (b) no modifica tu código, no escribe en tus bases de datos, no lee el contenido de tus aplicaciones y no elimina datos; (c) verifica el resultado tras cada acción y, si el incidente persiste o excede la lista, se detiene y escala a soporte humano; (d) está sujeto a un límite de acciones por hora; (e) registra cada diagnóstico y acción, con hora y resultado, en tu Registro.</p>
-<p><strong>Tu control.</strong> Puedes desactivar Autopilot por servidor, en cualquier momento y con efecto inmediato, desde el Panel.</p>
-<p><strong>Naturaleza del servicio.</strong> Autopilot utiliza sistemas de inteligencia artificial. Ponemos cuidado profesional en su diseño y supervisión, pero <strong>no garantizamos que resuelva todos los incidentes ni que cada diagnóstico sea correcto</strong>. Las acciones se limitan deliberadamente a operaciones reversibles y de bajo riesgo. La supervisión humana se presta de lunes a viernes.</p>
+<p><strong>Tu control.</strong> Puedes desactivar A3B Autopilot por servidor, en cualquier momento y con efecto inmediato, desde el Panel.</p>
+<p><strong>Naturaleza del servicio.</strong> A3B Autopilot utiliza sistemas de inteligencia artificial. Ponemos cuidado profesional en su diseño y supervisión, pero <strong>no garantizamos que resuelva todos los incidentes ni que cada diagnóstico sea correcto</strong>. Las acciones se limitan deliberadamente a operaciones reversibles y de bajo riesgo. La supervisión humana se presta de lunes a viernes.</p>
 <p><strong>Cambios en la lista.</strong> Podemos añadir Acciones Permitidas avisándote con 15 días; las nuevas acciones no se ejecutan en tus servidores hasta vencido ese plazo, y puedes excluirlas desde el Panel. La retirada de acciones puede ser inmediata.</p>
 <h2>8. Copias de seguridad: herramienta nuestra, copias tuyas</h2>
 <ul>
@@ -147,19 +147,19 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
 <h2>12. Precios y pago</h2>
 <ul>
 <li><strong>Panel</strong>: $5.99/mes el primer servidor; $2.49/mes por servidor del 2.º al 10.º; $1.99/mes del 11.º en adelante.</li>
-<li><strong>Autopilot</strong>: $19/mes por servidor activado. <strong>Gestión</strong>: $39/mes por servidor.</li>
-<li><strong>Complemento de restauración certificada</strong>: add-on opcional para servidores en Panel o Autopilot, +$12/mes por servidor sobre el precio del plan base. No es un plan independiente ni se contrata por separado.</li>
+<li><strong>A3B Autopilot</strong>: $19/mes por servidor activado. <strong>Gestión</strong>: $39/mes por servidor.</li>
+<li><strong>Complemento de restauración certificada</strong>: add-on opcional para servidores en Panel o A3B Autopilot, +$12/mes por servidor sobre el precio del plan base. No es un plan independiente ni se contrata por separado.</li>
 <li><strong>Pago anual</strong>: doce meses al precio de diez, en todos los planes. En Gestión incluye además la puesta en marcha sin costo.</li>
 <li>Facturación por adelantado, en dólares estadounidenses, con tarjeta a través de Stripe, desde A3B CLOUD LLC. Los impuestos aplicables se añaden según tu ubicación. Los cambios de servidores dentro del mes se prorratean en el siguiente ciclo.</li>
 <li><strong>Referidos</strong>: un mes gratis por cada cliente referido que active un servidor de pago, aplicado como crédito. El programa puede modificarse o cerrarse a nuevas altas con aviso.</li>
 <li><strong>Fundadores de Gestión</strong>: a los diez primeros clientes del plan Gestión no les aplicamos subidas de precio durante sus primeros doce meses de servicio.</li>
 <li><strong>Cambios de precio</strong>: con 30 días de aviso; si no te encaja, cancela sin coste antes de que aplique.</li>
-<li><strong>Impago</strong>: si un cobro falla, lo reintentamos y te avisamos; el servicio de vigilancia y Autopilot puede suspenderse a los 7 días y la suscripción cancelarse a los 15. Nada tuyo se apaga ni se borra: el servidor y las copias son tuyos.</li>
+<li><strong>Impago</strong>: si un cobro falla, lo reintentamos y te avisamos; el servicio de vigilancia y A3B Autopilot puede suspenderse a los 7 días y la suscripción cancelarse a los 15. Nada tuyo se apaga ni se borra: el servidor y las copias son tuyos.</li>
 <li><strong>Contracargos</strong>: si inicias un contracargo sin contactarnos antes, podemos suspender la cuenta mientras se resuelve. Preferimos devolverte el dinero a pelear: escríbenos primero.</li>
 </ul>
 <h2>13. Propiedad intelectual</h2>
 <ul>
-<li>El Panel, Autopilot, nuestras marcas y nuestro contenido son de A3B Cloud o de sus licenciantes. Te concedemos una licencia limitada, no exclusiva e intransferible para usar el servicio mientras la suscripción esté activa.</li>
+<li>El Panel, A3B Autopilot, nuestras marcas y nuestro contenido son de A3B Cloud o de sus licenciantes. Te concedemos una licencia limitada, no exclusiva e intransferible para usar el servicio mientras la suscripción esté activa.</li>
 <li><strong>Tu contenido es tuyo</strong>: aplicaciones, código, datos y copias. Nos concedes solo los permisos técnicos imprescindibles para operar el servicio que contrataste.</li>
 <li>El Panel está construido sobre software de código abierto bajo licencia Apache 2.0; las atribuciones correspondientes están disponibles en el propio Panel. Nada en estos términos limita los derechos que ese software te otorga por su propia licencia.</li>
 <li>Si nos envías sugerencias o ideas, podemos usarlas sin obligación ni compensación.</li>
@@ -167,7 +167,7 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
 <h2>14. Duración, cancelación y efectos</h2>
 <ul>
 <li><strong>Sin permanencia.</strong> Puedes cancelar cualquier plan o servidor con 15 días de aviso desde el Panel. Nosotros podemos cancelar con 30 días de aviso, o de inmediato en caso de uso abusivo, ilegal o impago conforme a la cláusula 12.</li>
-<li><strong>Al terminar</strong>: retiramos nuestro acceso y desactivamos la vigilancia y Autopilot. <strong>No tocamos tu servidor</strong>: tus aplicaciones siguen corriendo y tus copias siguen en tu bucket. Te entregamos las credenciales pertinentes y la guía de transición a un panel autoinstalado. Los datos de tu cuenta se tratan según la Política de Privacidad.</li>
+<li><strong>Al terminar</strong>: retiramos nuestro acceso y desactivamos la vigilancia y A3B Autopilot. <strong>No tocamos tu servidor</strong>: tus aplicaciones siguen corriendo y tus copias siguen en tu bucket. Te entregamos las credenciales pertinentes y la guía de transición a un panel autoinstalado. Los datos de tu cuenta se tratan según la Política de Privacidad.</li>
 <li>Las cláusulas que por su naturaleza deban sobrevivir (propiedad intelectual, confidencialidad, responsabilidad, indemnización, ley aplicable) sobreviven a la terminación.</li>
 </ul>
 <h2>15. Confidencialidad</h2>
@@ -177,7 +177,7 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
 <h2>17. Garantías y limitación de responsabilidad</h2>
 <p>Prestamos el servicio con cuidado razonable y profesional. Salvo lo expresamente indicado, el servicio se presta «tal cual»: no garantizamos que sea ininterrumpido o libre de errores, y <strong>no ofrecemos compromiso de disponibilidad con penalización</strong>. No prestamos asesoría legal, fiscal ni de cumplimiento.</p>
 <p><strong>Nuestra responsabilidad total y agregada se limita al importe que nos hayas pagado en los tres (3) meses anteriores al hecho que la origine.</strong> No respondemos de lucro cesante, pérdida de negocio, pérdida de datos que residan en tu infraestructura, ni daños indirectos o consecuenciales.</p>
-<p>No respondemos, en particular, de daños causados por: fallos o decisiones de tus proveedores de servidor o almacenamiento; tus propias aplicaciones o cambios que realices; el uso de tus credenciales por terceros; copias no restaurables cuando la restauración era responsabilidad tuya; ni <strong>Acciones Permitidas ejecutadas por Autopilot conforme a la autorización de la cláusula 7</strong>, sin perjuicio de nuestra obligación de diseñarlas y supervisarlas con cuidado profesional.</p>
+<p>No respondemos, en particular, de daños causados por: fallos o decisiones de tus proveedores de servidor o almacenamiento; tus propias aplicaciones o cambios que realices; el uso de tus credenciales por terceros; copias no restaurables cuando la restauración era responsabilidad tuya; ni <strong>Acciones Permitidas ejecutadas por A3B Autopilot conforme a la autorización de la cláusula 7</strong>, sin perjuicio de nuestra obligación de diseñarlas y supervisarlas con cuidado profesional.</p>
 <p>Nada de lo anterior limita la responsabilidad que la ley aplicable no permita limitar, ni los derechos irrenunciables que te correspondan como consumidor en tu país de residencia.</p>
 <h2>18. Indemnización</h2>
 <p>Nos mantendrás indemnes frente a reclamaciones de terceros derivadas de tu contenido, tus aplicaciones, tu incumplimiento de estos términos o tu uso ilegal del servicio, incluyendo costos razonables de defensa.</p>

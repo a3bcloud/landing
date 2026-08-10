@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Política de Privacidad — A3B Cloud</title>
-<meta name="description" content="Qué datos recopila A3B Cloud, qué no recopila por arquitectura, cómo procesa Autopilot con IA, subencargados, retención y tus derechos.">
+<meta name="description" content="Qué datos recopila A3B Cloud, qué no recopila por arquitectura, cómo procesa A3B Autopilot con IA, subencargados, retención y tus derechos.">
 <meta name="theme-color" content="#0D1211">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -100,25 +100,25 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
 <p>El diseño del servicio evita que tus datos pasen por nosotros: <strong>no alojamos el contenido de tus aplicaciones, no almacenamos tus bases de datos y no almacenamos tus copias de seguridad</strong> — viven en tu servidor y en tu bucket, contratados por ti con terceros. No accedemos al contenido de tus aplicaciones salvo que nos lo pidas para resolver una incidencia o al ejecutar una restauración contratada, y no leemos tus copias: las claves solo se usan para programar respaldos y, si lo contratas, verificar restauraciones.</p>
 <h2>5. Inteligencia artificial en el servicio</h2>
 <p>Usamos modelos de lenguaje (actualmente <strong>Anthropic</strong>, vía API) en dos funciones separadas del servicio. En ambos casos, y conforme a los términos comerciales de la API de nuestro proveedor, <strong>tus datos no se usan para entrenar los modelos</strong>.</p>
-<p><strong>Autopilot (resumen de incidentes).</strong> Cuando el agente actúa sobre un servidor donde lo has activado, enviamos al modelo los datos técnicos mínimos del incidente — tipo de anomalía, nombre del contenedor afectado, comando ejecutado, salida truncada — para que redacte un <strong>resumen en lenguaje humano</strong> que verás en tu panel y recibirás por correo. El LLM <strong>no decide qué acción tomar</strong>: las acciones son deterministas, salen de la lista pública de Acciones Permitidas y se ejecutan antes de invocar al modelo. Si el resumen falla, la notificación sale con el detalle técnico crudo.</p>
+<p><strong>A3B Autopilot (resumen de incidentes).</strong> Cuando el agente actúa sobre un servidor donde lo has activado, enviamos al modelo los datos técnicos mínimos del incidente — tipo de anomalía, nombre del contenedor afectado, comando ejecutado, salida truncada — para que redacte un <strong>resumen en lenguaje humano</strong> que verás en tu panel y recibirás por correo. El LLM <strong>no decide qué acción tomar</strong>: las acciones son deterministas, salen de la lista pública de Acciones Permitidas y se ejecutan antes de invocar al modelo. Si el resumen falla, la notificación sale con el detalle técnico crudo.</p>
 <p><strong>Deploy AI (generación asistida de configuración, beta).</strong> Si describes tu aplicación en español, el modelo genera un borrador de <code>Dockerfile</code>, <code>docker-compose.yml</code> y variables de entorno para que lo revises antes de desplegar. Lo que enviamos es <strong>exactamente el texto que escribes tú</strong>; no adjuntamos contenido de tus aplicaciones ni de tus servidores. <strong>No despliega nunca automáticamente</strong>: te muestra el resultado y tú decides. Recomendamos no incluir secretos ni datos personales de terceros en la descripción — la salida del modelo puede quedar registrada en logs técnicos.</p>
 <p>Cada llamada al modelo — en ambas funciones — queda en tu Registro, auditable por ti.</p>
 <h2>6. Para qué usamos los datos y con qué base</h2>
 <ul>
-<li><strong>Prestar el servicio</strong> (ejecución de contrato): operar el Panel, respaldos, vigilancia, avisos, Autopilot, soporte y facturación.</li>
+<li><strong>Prestar el servicio</strong> (ejecución de contrato): operar el Panel, respaldos, vigilancia, avisos, A3B Autopilot, soporte y facturación.</li>
 <li><strong>Seguridad y prevención de abuso</strong> (interés legítimo): proteger el servicio, tu cuenta y a terceros.</li>
 <li><strong>Mejora del servicio</strong> (interés legítimo): métricas agregadas y diagnósticos; no perfilamos personas ni vendemos audiencias.</li>
 <li><strong>Obligaciones legales</strong>: facturación, contabilidad y requerimientos válidos de autoridades.</li>
 <li><strong>Comunicaciones</strong>: transaccionales y de servicio siempre; comerciales solo nuestras y con baja en un clic.</li>
 </ul>
-<p>No tomamos decisiones automatizadas con efectos jurídicos sobre personas; las acciones de Autopilot operan sobre infraestructura, dentro de la lista que tú autorizas, y con posibilidad de desactivación inmediata.</p>
+<p>No tomamos decisiones automatizadas con efectos jurídicos sobre personas; las acciones de A3B Autopilot operan sobre infraestructura, dentro de la lista que tú autorizas, y con posibilidad de desactivación inmediata.</p>
 <h2>7. Con quién compartimos datos (subencargados)</h2>
 <p>Con <strong>proveedores que nos ayudan a operar</strong>, bajo contrato y solo lo necesario:</p>
 <ul>
 <li><strong>Stripe</strong> — procesamiento de pagos y facturación. Certificación PCI-DSS Level 1. Recibe datos de tarjeta directamente del cliente (nosotros nunca los vemos).</li>
 <li><strong>Cloudflare</strong> — red, TLS y entrega del servicio; <strong>Turnstile</strong> para verificación humana en formularios públicos (procesa IP, huella pasiva de navegador y señales de comportamiento para emitir el token, no perfila).</li>
-<li><strong>Anthropic</strong> — modelos de lenguaje usados por Autopilot (resumen de incidentes) y Deploy AI (generación asistida de configuración). Datos enviados descritos en la sección 5. Sin uso para entrenamiento.</li>
-<li><strong>Resend</strong> — envío de correo transaccional (bienvenida, restablecimiento de contraseña, avisos del Autopilot). Procesa la dirección de destino y el cuerpo del mensaje.</li>
+<li><strong>Anthropic</strong> — modelos de lenguaje usados por A3B Autopilot (resumen de incidentes) y Deploy AI (generación asistida de configuración). Datos enviados descritos en la sección 5. Sin uso para entrenamiento.</li>
+<li><strong>Resend</strong> — envío de correo transaccional (bienvenida, restablecimiento de contraseña, avisos del A3B Autopilot). Procesa la dirección de destino y el cuerpo del mensaje.</li>
 <li><strong>Proveedor de infraestructura del Panel</strong> — aloja el servidor donde corre el Panel. No accede a los datos del Panel; nosotros gestionamos el sistema operativo del host.</li>
 </ul>
 <p>Mantenemos la lista actualizada en <strong>a3bhub.cloud/subencargados</strong> y avisamos con 15 días antes de añadir uno nuevo que trate datos de clientes.</p>
