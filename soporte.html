@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
 :root{--bg:#08090b;--bg-2:#0d0f13;--surface:#111419;--surface-2:#171b22;--text:#e9eaee;--muted:#8b919c;--faint:#767d8a;--signal:#2ce58c;--signal-dim:#1d9c61;--danger:#ff5d5d;--amber:#ffb24d;--border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.14);--mono:"JetBrains Mono",ui-monospace,monospace;--disp:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -78,12 +79,25 @@ main code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);bo
 .two-col li{color:var(--muted);font-size:14.5px;margin:8px 0}
 .two-col li strong{color:var(--text)}
 
-/* CTA final */
-.cta{margin-top:60px;padding:28px 30px;border:1px solid rgba(44,229,140,.25);background:linear-gradient(180deg,rgba(44,229,140,.07),rgba(44,229,140,.015));border-radius:16px;text-align:center}
-.cta h3{font-family:var(--disp);font-weight:700;font-size:22px;color:var(--text);margin-bottom:6px}
-.cta p{color:var(--muted);margin:0 auto 16px;max-width:56ch}
-.cta a.btn{display:inline-block;font-weight:600;font-size:15px;padding:12px 22px;border-radius:11px;background:var(--signal);color:#04130b}
-.cta a.btn:hover{text-decoration:none;transform:translateY(-2px);transition:transform .15s;box-shadow:0 10px 30px -10px var(--signal)}
+/* Formulario de contacto */
+.contact-form{margin-top:60px;padding:32px;border:1px solid rgba(44,229,140,.25);background:linear-gradient(180deg,rgba(44,229,140,.05),rgba(44,229,140,.01));border-radius:16px}
+.contact-form h3{font-family:var(--disp);font-weight:700;font-size:22px;color:var(--text);margin-bottom:6px}
+.contact-form .lead-inline{color:var(--muted);font-size:14.5px;margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint);text-transform:uppercase;margin-bottom:6px}
+.field input,.field textarea{width:100%;background:var(--bg-2);border:1px solid var(--border-2);border-radius:9px;padding:12px 14px;color:var(--text);font-family:var(--body);font-size:14.5px;transition:border-color .15s,background .15s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--signal);background:var(--bg)}
+.field textarea{resize:vertical;min-height:130px;line-height:1.55}
+.field .hint{font-size:12px;color:var(--faint);margin-top:4px}
+.contact-turnstile{margin:16px 0 8px}
+.contact-submit{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;font-weight:600;font-size:15px;padding:13px 22px;border-radius:11px;background:var(--signal);color:#04130b;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.contact-submit:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 10px 30px -10px var(--signal)}
+.contact-submit:disabled{opacity:.6;cursor:progress}
+.contact-msg{margin-top:14px;padding:12px 14px;border-radius:9px;font-size:14px;display:none}
+.contact-msg.ok{background:rgba(44,229,140,.1);border:1px solid rgba(44,229,140,.3);color:var(--signal);display:block}
+.contact-msg.err{background:rgba(255,93,93,.08);border:1px solid rgba(255,93,93,.3);color:var(--danger);display:block}
+.contact-alt{text-align:center;margin-top:14px;font-size:13px;color:var(--faint)}
 
 footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--bg-2)}
 .foot{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
@@ -208,10 +222,34 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
     <h2>¿Prefieres leer antes de escribir?</h2>
     <p>Muchas dudas de primera hora las cubre la sección de <a href="index.html#preguntas">Preguntas incómodas</a> del sitio y el <a href="responsabilidad.html">Modelo de Responsabilidad Compartida</a> (quién responde por qué en cada plan).</p>
 
-    <div class="cta">
-      <h3>¿Todo listo?</h3>
-      <p>Escríbenos con los datos de arriba y te contestamos lo antes posible dentro del horario laboral.</p>
-      <a class="btn" href="mailto:support@a3bhub.cloud?subject=Consulta%20-%20A3B%20Cloud">Escribir a soporte</a>
+    <div class="contact-form" id="contactar">
+      <h3>Escríbenos</h3>
+      <p class="lead-inline">Rellena el formulario y te respondemos por correo. Si prefieres, también puedes escribir directamente a <a href="mailto:support@a3bhub.cloud">support@a3bhub.cloud</a>.</p>
+      <form id="contactForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="contactName">Nombre</label>
+            <input id="contactName" name="name" type="text" required autocomplete="name" placeholder="Tu nombre" maxlength="100">
+          </div>
+          <div class="field">
+            <label for="contactEmail">Correo</label>
+            <input id="contactEmail" name="email" type="email" required autocomplete="email" placeholder="tu@correo.com" maxlength="255">
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:14px">
+          <label for="contactSubject">Asunto</label>
+          <input id="contactSubject" name="subject" type="text" required placeholder="Ej: Duda sobre plan A3B Autopilot" maxlength="200">
+        </div>
+        <div class="field">
+          <label for="contactMessage">Mensaje</label>
+          <textarea id="contactMessage" name="message" required placeholder="Cuéntanos qué necesitas. Cuantos más datos incluyas, más rápido te ayudaremos." maxlength="5000"></textarea>
+          <span class="hint">Mín. 20 caracteres · máx. 5000</span>
+        </div>
+        <div class="cf-turnstile contact-turnstile" data-sitekey="0x4AAAAAAELc6oEEUQTJoplv" data-action="contact-form" data-theme="dark"></div>
+        <button type="submit" class="contact-submit" id="contactSubmit">Enviar mensaje</button>
+        <div class="contact-msg" id="contactMsg" role="status"></div>
+        <p class="contact-alt">Respondemos en horario laboral (L–V). Prioridad para clientes de A3B Autopilot y Gestión.</p>
+      </form>
     </div>
 
   </div>
@@ -230,5 +268,66 @@ footer{border-top:1px solid var(--border);padding:38px 0 48px;background:var(--b
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var API='https://app.a3bhub.cloud/api/v1/contact';
+  var form=document.getElementById('contactForm');
+  var btn=document.getElementById('contactSubmit');
+  var msg=document.getElementById('contactMsg');
+  if(!form||!btn||!msg)return;
+
+  function show(kind,text){
+    msg.className='contact-msg '+kind;
+    msg.textContent=text;
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.name.value.trim();
+    var email=form.email.value.trim();
+    var subject=form.subject.value.trim();
+    var message=form.message.value.trim();
+    if(name.length<2){show('err','Necesitamos tu nombre.');return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){show('err','Introduce un correo valido.');return;}
+    if(subject.length<3){show('err','Anade un asunto breve.');return;}
+    if(message.length<20){show('err','El mensaje es muy corto (min. 20 caracteres).');return;}
+    var ts=form.querySelector('[name="cf-turnstile-response"]');
+    var tsToken=ts?ts.value:'';
+    if(!tsToken){show('err','Completa la verificacion humana antes de enviar.');return;}
+
+    btn.disabled=true;btn.textContent='Enviando...';
+    msg.className='contact-msg';msg.textContent='';
+
+    fetch(API,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        name:name,
+        email:email,
+        subject:subject,
+        message:message,
+        'cf-turnstile-response':tsToken
+      })
+    }).then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+    .then(function(res){
+      if(res.ok&&res.d.ok){
+        show('ok',res.d.message||'Mensaje enviado. Te responderemos por email.');
+        form.reset();
+        // Reset del widget Turnstile (necesario si el user quiere mandar otro mensaje)
+        if(window.turnstile){var w=form.querySelector('.cf-turnstile');if(w){window.turnstile.reset(w);}}
+        btn.textContent='Enviado';
+        setTimeout(function(){btn.disabled=false;btn.textContent='Enviar mensaje';},4000);
+        return;
+      }
+      show('err',(res.d&&res.d.error)||'No pudimos enviar el mensaje. Escribenos a support@a3bhub.cloud.');
+      btn.disabled=false;btn.textContent='Enviar mensaje';
+    }).catch(function(){
+      show('err','Sin conexion con el servidor. Escribenos a support@a3bhub.cloud.');
+      btn.disabled=false;btn.textContent='Enviar mensaje';
+    });
+  });
+})();
+</script>
 </body>
 </html>
