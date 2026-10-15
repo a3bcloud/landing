@@ -1,8 +1,8 @@
 {
-  "comprobado": "2026-10-15T06:24:01Z",
+  "comprobado": "2026-10-15T12:04:06Z",
   "correcto": true,
   "codigo": "200",
-  "respuesta_ms": 850,
+  "respuesta_ms": 720,
   "certificado_dias": 75,
   "problemas": []
 }
